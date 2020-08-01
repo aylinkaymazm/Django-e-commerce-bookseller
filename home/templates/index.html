@@ -1,14 +1,18 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>ilk sayfa</title>
-</head>
-<body>
-<h1>hello django</h1>
-<h3>github kaysı kontrol1---çalıştırma için c:\django\project2\>python manage.py runserver </h3>
-<p>
-    {{  text | safe }}
-</p>
-</body>
-</html>
+{% extends "homebase.html"%}
+
+{% block title %}index sayfsı{% endblock %}
+{% block keywords %}index sayfası anahtar kelimeler{% endblock %}
+{% block description %}index sayfasi açiklama{% endblock %}
+
+{% block sidebar %}
+    {% include "sidebar.html" %}
+{% endblock %}
+
+
+{% block slider %}
+    {% include "slider.html" %}
+{% endblock %}
+
+{% block content %}
+    {% include "content.html" %}
+{% endblock %}

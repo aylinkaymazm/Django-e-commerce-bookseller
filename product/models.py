@@ -3,7 +3,7 @@ from django.db import models
 # Create your models here.
 class Category(models.Model):
     STATUS= (
-        ('True' , 'Evet'),
+        ('True', 'Evet'),
         ('False', 'Hayır'),
     )
     title = models.CharField(max_length=30)
@@ -21,12 +21,12 @@ class Category(models.Model):
 
 class Product(models.Model):
     STATUS= (
-        ('True' , 'Evet'),
+        ('True', 'Evet'),
         ('False', 'Hayır'),
     )
     #product ın category ile ilişkisi var 1-1 manytomany
     category = models.ForeignKey(Category, on_delete=models.CASCADE)
-    title = models.CharField(max_length=30)
+    title = models.CharField(max_length=100)
     keywords= models.CharField(max_length=255)
     description = models.CharField(max_length=255)
     image=models.ImageField(blank=True,upload_to='images/')
@@ -39,3 +39,8 @@ class Product(models.Model):
 
     def __str__(self):
         return self.title
+
+class Images(models.Model):
+        Product=models.ForeignKey(Product,on_delete=models.CASCADE)
+        title = models.CharField(max_length=50)
+        image = models.ImageField(blank=True, upload_to='images/')

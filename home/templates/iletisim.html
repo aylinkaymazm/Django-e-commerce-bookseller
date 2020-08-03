@@ -1,0 +1,36 @@
+{% extends "homebase.html" %}
+
+{% block title %}iletisim{{setting.company }}{% endblock %}
+{% block keywords %}{{setting.keywords }}{% endblock %}
+{% block description %}{{setting.description }}{% endblock %}
+
+{% block head %}
+    <link rel='shortcut icon' type='image/x-icon' href='{{ setting.icon.url }}' />
+{% endblock %}
+
+{% block sidebar %}{% include "sidebar.html" %}{% endblock %}
+
+{% block content %}
+    <!-- Start All BREADCRUMB Title Box -->
+    <div class="all-title-box">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <h2></h2>
+                    <ul class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="#">Anasayfa</a></li>
+                        <li class="breadcrumb-item active">iletisim </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- End All Title Box -->
+    <div class="section">
+        <div class="container">
+            <div class="row">
+                {{ setting.contact-us |safe }}
+            </div>
+        </div>
+    </div>
+{% endblock %}

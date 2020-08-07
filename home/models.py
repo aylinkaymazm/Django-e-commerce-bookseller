@@ -41,6 +41,7 @@ class ContactFormMessage(models.Model):
     STATUS = (
         ('New', 'new'),
         ('Read', 'Read'),
+        ('Closed', 'Closed'),
     )
     name = models.CharField(blank=True,max_length=20)
     email = models.CharField(blank=True,max_length=50)
@@ -54,6 +55,7 @@ class ContactFormMessage(models.Model):
 
     def __str__(self):
         return self.name
+
 class ContactFormu(ModelForm):
     class Meta:
         model=ContactFormMessage

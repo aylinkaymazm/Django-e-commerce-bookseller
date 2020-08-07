@@ -4,7 +4,7 @@ from django.contrib import admin
 from home.models import Setting,ContactFormMessage
 
 class ContactFormMeassageAdmin(admin.ModelAdmin):
-    list_display = ['name','email','subject','status']
+    list_display = ['name','email','subject','message','note','status']
     list_filter = ['status']
 
 admin.site.register(ContactFormMessage,ContactFormMeassageAdmin)

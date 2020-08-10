@@ -16,62 +16,73 @@
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="navbar-menu">
                 <ul class="nav navbar-nav ml-auto" data-in="fadeInDown" data-out="fadeOutUp">
-                    <li class="nav-item active"><a class="nav-link" href="index.html">Anasayfa</a></li>
-                    <li class="nav-item"><a class="nav-link" href="about.html">Hakkımızda</a></li>
+                    <li class="nav-item active"><a class="nav-link" href="/anasayfa">Anasayfa</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/hakkimizda">Hakkımızda</a></li>
+
+
                     <li class="dropdown megamenu-fw">
+
                         <a href="#" class="nav-link dropdown-toggle arrow" data-toggle="dropdown">Menü</a>
                         <ul class="dropdown-menu megamenu-content" role="menu">
-                            <li>
-                                <div class="row">
-                                    <div class="col-menu col-md-3">
-                                        <h6 class="title">Kitaplar</h6>
-                                        <div class="content">
-                                            <ul class="menu-col">
-                                                <li><a href="shop.html">Roman</a></li>
-                                                <li><a href="shop.html">Çocuk Kitapları</a></li>
-                                                <li><a href="shop.html">Şiir Kitapları</a></li>
-                                                <li><a href="shop.html">e-Kitaplar</a></li>
-                                            </ul>
-                                        </div>
+
+                            {% load mptt_tags %}
+
+                            {% recursetree category %}
+                                <li>
+                                    {{ node.title }}
+                                    {% if not node.is_leaf_node %}
+                                        <ul class="children">
+                                            {{ children }}
+                                        </ul>
+                                    {% endif %}
+                                </li>
+                            {% endrecursetree %}
+                            <div class="row">
+                                <div class="col-menu col-md-3">
+                                    <h6 class="title">{{ node.title }}</h6>
+                                    <div class="content">
+                                        <ul class="children">
+                                            {{ children }}
+                                        </ul>
                                     </div>
-                                    <!-- end col-3 -->
-                                    <div class="col-menu col-md-3">
-                                        <h6 class="title">Dergiler</h6>
-                                        <div class="content">
-                                            <ul class="menu-col">
-                                                <li><a href="shop.html">Edebiyat Dergileri</a></li>
-                                                <li><a href="shop.html">Aylık Dergiler</a></li>
-                                                <li><a href="shop.html">Yemek Dergileri</a></li>
-                                                <li><a href="shop.html">Hobi Dergileri</a></li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                    <!-- end col-3 -->
-                                    <div class="col-menu col-md-3">
-                                        <h6 class="title">Elektronik</h6>
-                                        <div class="content">
-                                            <ul class="menu-col">
-                                                <li><a href="shop.html">Kulaklıklar</a></li>
-                                                <li><a href="shop.html">Ev Elektroniği</a></li>
-                                                <li><a href="shop.html">Tabletler ve Çevre Birimleri</a></li>
-                                                <li><a href="shop.html">E-Kitap Okuyucular</a></li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                    <div class="col-menu col-md-3">
-                                        <h6 class="title">Sınav Kitapları</h6>
-                                        <div class="content">
-                                            <ul class="menu-col">
-                                                <li><a href="shop.html">ALES</a></li>
-                                                <li><a href="shop.html">TYT-AYT</a></li>
-                                                <li><a href="shop.html">YDS</a></li>
-                                                <li><a href="shop.html">LGS</a></li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                    <!-- end col-3 -->
                                 </div>
-                                <!-- end row -->
+                                <!-- end col-3 -->
+                                <div class="col-menu col-md-3">
+                                    <h6 class="title">{{ node.title }}</h6>
+                                    <div class="content">
+                                        {% if not node.is_leaf_node %}
+                                            <ul class="children">
+                                                {{ children }}
+                                            </ul>
+                                        {% endif %}
+
+                                    </div>
+                                </div>
+                                <!-- end col-3 -->
+                                <div class="col-menu col-md-3">
+                                    <h5 class="title">{{ node.title }}</h5>
+                                    <div class="content">
+                                        {% if not node.is_leaf_node %}
+                                            <ul class="children">
+                                                {{ children }}
+                                            </ul>
+                                        {% endif %}
+
+                                    </div>
+                                </div>
+                                <div class="col-menu col-md-3">
+                                    <h6 class="title">{{ node.title }}</h6>
+                                    <div class="content">
+                                        {% if not node.is_leaf_node %}
+                                            <ul class="children">
+                                                {{ children }}
+                                            </ul>
+                                        {% endif %}
+                                    </div>
+                                </div>
+                                <!-- end col-3 -->
+                            </div>
+                            <!-- end row -->
                             </li>
                         </ul>
                     </li>
@@ -85,23 +96,13 @@
                             <li><a href="shop-detail.html">Ayrıntı</a></li>
                         </ul>
                     </li>
-                    <li class="nav-item"><a class="nav-link" href="service.html">Referanslar</a></li>
-                    <li class="nav-item"><a class="nav-link" href="contact-us.html">İletişim</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/referanslar">Referanslar</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/iletisim">İletişim</a></li>
                 </ul>
             </div>
             <!-- /.navbar-collapse -->
 
-            <!-- Start Atribute Navigation -->
-            <div class="attr-nav">
-                <ul>
-                    <li class="search"><a href="#"><i class="fa fa-search"></i></a></li>
-                    <li class="side-menu"><a href="#">
-                        <i class="fa fa-shopping-bag"></i>
-                        <span class="badge">3</span>
-                    </a></li>
-                </ul>
-            </div>
-            <!-- End Atribute Navigation -->
+
         </div>
 
     </nav>

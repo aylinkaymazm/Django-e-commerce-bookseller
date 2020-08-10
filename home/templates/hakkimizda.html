@@ -1,15 +1,10 @@
 {% extends "homebase.html" %}
 {% load static %}
-{% block title %}Hakkımızda{{setting.company }}{% endblock %}
+{% block title %}Hakkımızda{{setting.title }}{% endblock %}
 {% block keywords %}{{setting.keywords }}{% endblock %}
 {% block description %}{{setting.description }}{% endblock %}
-
-{% block head %}
-    <link rel='shortcut icon' type='image/x-icon' href='{{ setting.icon.url }}' />
-{% endblock %}
-
 {% block sidebar %}{% include "sidebar.html" %}{% endblock %}
-{% block content %}
+{% block body %}
 
     <!-- Start All BREADCRUMB Title Box -->
     <div class="all-title-box">
@@ -30,7 +25,7 @@
     <div class="about-box-main">
         <div class="container">
             <div class="row">
-                {{ setting.aboutus|safe }}
+                {{ setting.about|safe }}
                 <div class="col-lg-6">
                     <h2 class="noo-sh-title">We are <span>kaysı.com</span></h2>
                     <p>"Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam
@@ -73,7 +68,7 @@
                     <div class="hover-team">
                         <div class="our-team"> <img src="images/img-1.jpg" alt="" />
                             <div class="team-content">
-                                <h3 class="title">Williamson</h3> <span class="post">Web Developer</span> </div>
+                                <h3 class="title">Williamson</h3> <span class="post"></span> </div>
                             <ul class="social">
                                 <li>
                                     <a href="#" class="fab fa-facebook"></a>
@@ -99,7 +94,7 @@
                     <div class="hover-team">
                         <div class="our-team"> <img src="images/img-2.jpg" alt="" />
                             <div class="team-content">
-                                <h3 class="title">Kristiana</h3> <span class="post">Web Developer</span> </div>
+                                <h3 class="title">Kristiana</h3> <span class="post"></span> </div>
                             <ul class="social">
                                 <li>
                                     <a href="#" class="fab fa-facebook"></a>
@@ -125,7 +120,7 @@
                     <div class="hover-team">
                         <div class="our-team"> <img src="images/img-3.jpg" alt="" />
                             <div class="team-content">
-                                <h3 class="title">Steve Thomas</h3> <span class="post">Web Developer</span> </div>
+                                <h3 class="title">Steve Thomas</h3> <span class="post"></span> </div>
                             <ul class="social">
                                 <li>
                                     <a href="#" class="fab fa-facebook"></a>
@@ -151,7 +146,7 @@
                     <div class="hover-team">
                         <div class="our-team"> <img src="images/img-1.jpg" alt="" />
                             <div class="team-content">
-                                <h3 class="title">Williamson</h3> <span class="post">Web Developer</span> </div>
+                                <h3 class="title">Williamson</h3> <span class="post"></span> </div>
                             <ul class="social">
                                 <li>
                                     <a href="#" class="fab fa-facebook"></a>

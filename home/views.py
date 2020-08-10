@@ -7,20 +7,26 @@ from home.models import Setting, ContactFormMessage, ContactFormu
 
 
 # context e yolla burdan render la index.html e yolluyoruz.
-from product.models import Product
+from product.models import Product, Category
 
 
 def index(request):
     setting = Setting.objects.get(pk=1)
     sliderdata = Product.objects.all()[:3]
+    category = Category.objects.all()
+
     context = {'setting': setting,
+               'category': category,
                'page':'home',
                'sliderdata': sliderdata}
     return render(request,'index.html',context)
 
 def hakkimizda(request):
     setting = Setting.objects.get(pk=1)
-    context = {'setting': setting}
+    category = Category.objects.all()
+
+    context = {'setting': setting,
+               'category':category}
     return render(request,'hakkimizda.html',context)
 
 def referanslar(request):
@@ -46,5 +52,8 @@ def iletisim(request):
 
     setting = Setting.objects.get(pk=1)
     form = ContactFormu()
-    context = {'setting': setting,'form':form}
+    category = Category.objects.all()
+    context = {'setting': setting,
+               'category': category,
+               'form':form}
     return render(request,'iletisim.html',context)

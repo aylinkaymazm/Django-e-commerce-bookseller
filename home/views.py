@@ -26,12 +26,14 @@ def hakkimizda(request):
     category = Category.objects.all()
 
     context = {'setting': setting,
-               'category':category}
+               'category':category,
+               'page':'home'}
     return render(request,'hakkimizda.html',context)
 
 def referanslar(request):
     setting = Setting.objects.get(pk=1)
-    context = {'setting': setting}
+    context = {'setting': setting,
+               'page':'home'}
     return render(request,'referanslarimiz.html',context)
 
 
@@ -55,5 +57,6 @@ def iletisim(request):
     category = Category.objects.all()
     context = {'setting': setting,
                'category': category,
-               'form':form}
+               'form':form,
+               'page':'home'}
     return render(request,'iletisim.html',context)

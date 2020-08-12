@@ -9,102 +9,57 @@
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-menu" aria-controls="navbars-rs-food" aria-expanded="false" aria-label="Toggle navigation">
                     <i class="fa fa-bars"></i>
                 </button>
-                <a class="navbar-brand" href="index.html"><img src="{% static "images/logo.png"%} "class="logo" alt="" ></a>
+                <a class="navbar-brand" href="index.html"><img src="{% static "images/favicon.ico"%} "class="logo" alt="" ></a>
             </div>
             <!-- End Header Navigation -->
 
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="navbar-menu">
                 <ul class="nav navbar-nav ml-auto" data-in="fadeInDown" data-out="fadeOutUp">
-                    <li class="nav-item active"><a class="nav-link" href="/anasayfa">Anasayfa</a></li>
+                    <li class="nav-item active"><a class="nav-link" href="#">Anasayfa</a></li>
                     <li class="nav-item"><a class="nav-link" href="/hakkimizda">Hakkımızda</a></li>
-
-
                     <li class="dropdown megamenu-fw">
-
-                        <a href="#" class="nav-link dropdown-toggle arrow" data-toggle="dropdown">Menü</a>
-                        <ul class="dropdown-menu megamenu-content" role="menu">
-
-                            {% load mptt_tags %}
-
-                            {% recursetree category %}
+                        {% if page %}
+                            <div class="category-nav">
+                        {% else %}
+                            <div class="category-nav show-on-click">
+                        {% endif %}
+                        <span class="category-header">Categories<i class="fa fa-list"></i></span>
+                        {% load mptt_tags %}
+                        {% recursetree category %}
+                            <a href="/category/{{ node.slug }}" class="nav-link dropdown-toggle arrow" {% if not node.is_leaf_node %} data-toggle="dropdown" ARIA-EXPANDED="true" {% endif %}>{{ node.title }}{% if not node.is_leaf_node %}<i class="fa fa-angle-right"></i> {% endif %}</a>
+                            <ul class="dropdown-menu megamenu-content" role="menu">
                                 <li>
-                                    {{ node.title }}
-                                    {% if not node.is_leaf_node %}
-                                        <ul class="children">
-                                            {{ children }}
-                                        </ul>
-                                    {% endif %}
+                                    <div class="row">
+                                        <div class="col-menu col-md-3">
+                                            <div class="content">
+                                                {% if not node.is_leaf_node %}
+                                                    <ul class="menu-col">
+                                                        <li><a href="<a href="/category{{ node.slug }}">{{ children }}</a></li>
+                                                    </ul>
+                                                {% endif %}
+                                            </div>
+                                        </div>
+                                    </div>
                                 </li>
-                            {% endrecursetree %}
-                            <div class="row">
-                                <div class="col-menu col-md-3">
-                                    <h6 class="title">{{ node.title }}</h6>
-                                    <div class="content">
-                                        <ul class="children">
-                                            {{ children }}
-                                        </ul>
-                                    </div>
-                                </div>
-                                <!-- end col-3 -->
-                                <div class="col-menu col-md-3">
-                                    <h6 class="title">{{ node.title }}</h6>
-                                    <div class="content">
-                                        {% if not node.is_leaf_node %}
-                                            <ul class="children">
-                                                {{ children }}
-                                            </ul>
-                                        {% endif %}
+                            </ul>
+                        {% endrecursetree %}
 
-                                    </div>
-                                </div>
-                                <!-- end col-3 -->
-                                <div class="col-menu col-md-3">
-                                    <h5 class="title">{{ node.title }}</h5>
-                                    <div class="content">
-                                        {% if not node.is_leaf_node %}
-                                            <ul class="children">
-                                                {{ children }}
-                                            </ul>
-                                        {% endif %}
-
-                                    </div>
-                                </div>
-                                <div class="col-menu col-md-3">
-                                    <h6 class="title">{{ node.title }}</h6>
-                                    <div class="content">
-                                        {% if not node.is_leaf_node %}
-                                            <ul class="children">
-                                                {{ children }}
-                                            </ul>
-                                        {% endif %}
-                                    </div>
-                                </div>
-                                <!-- end col-3 -->
-                            </div>
-                            <!-- end row -->
-                            </li>
-                        </ul>
-                    </li>
+                        <!-- end row -->
                     <li class="dropdown">
                         <a href="#" class="nav-link dropdown-toggle arrow" data-toggle="dropdown">Profil</a>
                         <ul class="dropdown-menu">
-                            <li><a href="cart.html">Sepetim</a></li>
-                            <li><a href="checkout.html">Çıkış Yap</a></li>
-                            <li><a href="my-account.html">Hesabım</a></li>
-                            <li><a href="wishlist.html">Favoriler</a></li>
-                            <li><a href="shop-detail.html">Ayrıntı</a></li>
+                            <li><a href="#">Sepetim</a></li>
+                            <li><a href="#">Çıkış Yap</a></li>
+                            <li><a href="#">Hesabım</a></li>
+                            <li><a href="#">Favoriler</a></li>
                         </ul>
                     </li>
                     <li class="nav-item"><a class="nav-link" href="/referanslar">Referanslar</a></li>
                     <li class="nav-item"><a class="nav-link" href="/iletisim">İletişim</a></li>
                 </ul>
             </div>
-            <!-- /.navbar-collapse -->
-
-
-        </div>
-
+        </div>    <!-- /.navbar-collapse -->
     </nav>
     <!-- End Navigation -->
 </header>

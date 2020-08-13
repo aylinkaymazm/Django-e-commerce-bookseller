@@ -1,5 +1,64 @@
 {% load static %}
 <!-- Start Main Top -->
+    <div class="main-top">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                    <div class="text-slid-box">
+                        <div id="offer-box" class="carouselTicker">
+                            <ul class="offer-box">
+                                <li>
+                                    <i class="fab fa-opencart"></i> İNDİRİM 10%! Romanlarda
+                                <li>
+                                    <i class="fab fa-opencart"></i> 50% - 80% İNDİRİM Defterlerde
+                                </li>
+                                <li>
+                                    <i class="fab fa-opencart"></i> 20% ilk alışverişinize İNDİRİM kodu: offT20
+                                </li>
+                                <li>
+                                    <i class="fab fa-opencart"></i> İNDİRİM 50%! Alışverişe Başla
+                                </li>
+                                <li>
+                                    <i class="fab fa-opencart"></i>  10%! İNDİRİM Çocuk Kitaplarında
+                                </li>
+                                <li>
+                                    <i class="fab fa-opencart"></i> 50% - 80% İNDİRİM Hobi Dergilerinde
+                                </li>
+                                <li>
+                                    <i class="fab fa-opencart"></i> 20% ilk alışverişinize İNDİRİM kodu: offT20
+                                </li>
+                                <li>
+                                    <i class="fab fa-opencart"></i> İNDİRİM 50%! Alışverişe Başla
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                    <div class="custom-select-box">
+                        <select id="basic" class="selectpicker show-tick form-control" data-placeholder="$ USD">
+						<option>¥ TL</option>
+						<option>$ USD</option>
+						<option>€ EUR</option>
+					</select>
+                    </div>
+                    <div class="right-phone-box">
+                        <p>Bize Ulaşın :- <a href="#"> +11 900 800 100</a></p>
+                    </div>
+                    <div class="our-link">
+                        <ul>
+                            <li><a href="#">Hesabım</a></li>
+                            <li><a href="#">Neredeyiz</a></li>
+                            <li><a href="#">Sikayetim var</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- End Main Top -->
+
+<!-- Start Main Top -->
 <header class="main-header">
     <!-- Start Navigation -->
     <nav class="navbar navbar-expand-lg navbar-light bg-light navbar-default bootsnav">
@@ -9,57 +68,27 @@
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-menu" aria-controls="navbars-rs-food" aria-expanded="false" aria-label="Toggle navigation">
                     <i class="fa fa-bars"></i>
                 </button>
-                <a class="navbar-brand" href="index.html"><img src="{% static "images/favicon.ico"%} "class="logo" alt="" ></a>
+                <a class="navbar-brand" href="index.html"><img src="{% static "images/favicon.ico"%}"class="logo" alt="" ></a>
             </div>
             <!-- End Header Navigation -->
-
             <!-- Collect the nav links, forms, and other content for toggling -->
-            <div class="collapse navbar-collapse" id="navbar-menu">
-                <ul class="nav navbar-nav ml-auto" data-in="fadeInDown" data-out="fadeOutUp">
-                    <li class="nav-item active"><a class="nav-link" href="#">Anasayfa</a></li>
-                    <li class="nav-item"><a class="nav-link" href="/hakkimizda">Hakkımızda</a></li>
-                    <li class="dropdown megamenu-fw">
-                        {% if page %}
-                            <div class="category-nav">
-                        {% else %}
-                            <div class="category-nav show-on-click">
-                        {% endif %}
-                        <span class="category-header">Categories<i class="fa fa-list"></i></span>
-                        {% load mptt_tags %}
-                        {% recursetree category %}
-                            <a href="/category/{{ node.slug }}" class="nav-link dropdown-toggle arrow" {% if not node.is_leaf_node %} data-toggle="dropdown" ARIA-EXPANDED="true" {% endif %}>{{ node.title }}{% if not node.is_leaf_node %}<i class="fa fa-angle-right"></i> {% endif %}</a>
-                            <ul class="dropdown-menu megamenu-content" role="menu">
-                                <li>
-                                    <div class="row">
-                                        <div class="col-menu col-md-3">
-                                            <div class="content">
-                                                {% if not node.is_leaf_node %}
-                                                    <ul class="menu-col">
-                                                        <li><a href="<a href="/category{{ node.slug }}">{{ children }}</a></li>
-                                                    </ul>
-                                                {% endif %}
-                                            </div>
-                                        </div>
-                                    </div>
-                                </li>
-                            </ul>
-                        {% endrecursetree %}
 
-                        <!-- end row -->
-                    <li class="dropdown">
-                        <a href="#" class="nav-link dropdown-toggle arrow" data-toggle="dropdown">Profil</a>
-                        <ul class="dropdown-menu">
-                            <li><a href="#">Sepetim</a></li>
-                            <li><a href="#">Çıkış Yap</a></li>
-                            <li><a href="#">Hesabım</a></li>
-                            <li><a href="#">Favoriler</a></li>
-                        </ul>
-                    </li>
-                    <li class="nav-item"><a class="nav-link" href="/referanslar">Referanslar</a></li>
-                    <li class="nav-item"><a class="nav-link" href="/iletisim">İletişim</a></li>
-                </ul>
-            </div>
-        </div>    <!-- /.navbar-collapse -->
+                <li class="nav-item active"><a class="nav-link" href="#">Anasayfa</a></li>
+                <li class="nav-item"><a class="nav-link" href="/hakkimizda">Hakkımızda</a></li>
+                <li class="nav-item"><a class="nav-link" href="/products">Ürünlerimiz</a></li>
+                <li class="dropdown">
+                <a href="#" class="nav-link dropdown-toggle arrow" data-toggle="dropdown">Profil</a>
+                    <ul class="dropdown-menu">
+                        <li><a href="#">Sepetim</a></li>
+                        <li><a href="#">Çıkış Yap</a></li>
+                        <li><a href="#">Hesabım</a></li>
+                        <li><a href="#">Favoriler</a></li>
+                    </ul>
+
+                <li class="nav-item"><a class="nav-link" href="/referanslar">Referanslar</a></li>
+                <li class="nav-item"><a class="nav-link" href="/iletisim">İletişim</a></li>
+
+        </div>
     </nav>
     <!-- End Navigation -->
 </header>

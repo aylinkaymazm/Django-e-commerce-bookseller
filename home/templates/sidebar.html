@@ -1,80 +1,35 @@
 {% load static %}
 <!-- Start Atribute Navigation -->
 <div class="attr-nav">
-    <ul>
-        <li class="search"><a href="#"><i class="fa fa-search"></i></a></li>
-        <li class="side-menu"><a href="#">
-            <i class="fa fa-shopping-bag"></i>
-            <span class="badge">3</span>
-        </a></li>
-    </ul>
-</div>
-<!-- End Atribute Navigation -->
-
-<!-- Start Side Menu -->
-<div class="side">
-    <a href="#" class="close-side"><i class="fa fa-times"></i></a>
-    <li class="cart-box">
-        <ul class="cart-list">
-            <li>
-                <a href="#" class="photo"><img src="images/img-pro-01.jpg" class="cart-thumb" alt="" /></a>
-                <h6><a href="#">Delica omtantur </a></h6>
-                <p>1x - <span class="price">$80.00</span></p>
+    <div class="container">
+    <div id="responsive-nav">
+            <li class="search"><a href="#"><i class="fa fa-search"></i></a></li>
+            <li class="dropdown-menu"><a href="#">
+            {% if page %}
+                <div class="category-nav">
+            {% else %}
+                <div class="category-nav show-on-click">
+            {% endif %}
+                <span class="dropdown">Categories<i class="dropdown-toggle"></i></span>
+                {% load mptt_tags %}
+                {% recursetree category %}
+                    <li class="dropdown side-dropdown">
+                    <a href="/category/ {{node.slug }}" class="dropdown-toggle" {% if not node.is_leaf_node %} data-toggle="dropdown" aria-expanded="true" {% endif %}>{{ node.title }}{% if not node.is_leaf_node %} <i class="fa fa-times"></i>{% endif %}</a>
+                    <div class="custom-menu">
+                        <div class="row">
+                            <div class="col-md-4">
+                                {% if not node.is_leaf_node %}
+                                    <ul class="list-links ">
+                                        <li><a href="/category/{{ node.slug }}">{{ children }}</a></li>
+                                    </ul>
+                                {% endif %}
+                                <hr class="hidden-md hidden-lg">
+                            </div>
+                        </div>
+                    </div>
+                    </li>
+                {% endrecursetree %}
             </li>
-            <li>
-                <a href="#" class="photo"><img src="images/img-pro-02.jpg" class="cart-thumb" alt="" /></a>
-                <h6><a href="#">Omnes ocurreret</a></h6>
-                <p>1x - <span class="price">$60.00</span></p>
-            </li>
-            <li>
-                <a href="#" class="photo"><img src="images/img-pro-03.jpg" class="cart-thumb" alt="" /></a>
-                <h6><a href="#">Agam facilisis</a></h6>
-                <p>1x - <span class="price">$40.00</span></p>
-            </li>
-            <li class="total">
-                <a href="#" class="btn btn-default hvr-hover btn-cart">VIEW CART</a>
-                <span class="float-right"><strong>Total</strong>: $180.00</span>
-            </li>
-        </ul>
-    </li>
-</div>
-<!-- End Side Menu -->
-<!-- End Navigation -->
-<!-- Start Categories  -->
-    <div class="categories-shop">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
-                    <div class="shop-cat-box">
-                        <img class="img-fluid" src="images/t-shirts-img.jpg" alt="" />
-                        <a class="btn hvr-hover" href="#">T-shirts</a>
-                    </div>
-                    <div class="shop-cat-box">
-                        <img class="img-fluid" src="images/shirt-img.jpg" alt="" />
-                        <a class="btn hvr-hover" href="#">Shirt</a>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
-                    <div class="shop-cat-box">
-                        <img class="img-fluid" src="images/wallet-img.jpg" alt="" />
-                        <a class="btn hvr-hover" href="#">Wallet</a>
-                    </div>
-                    <div class="shop-cat-box">
-                        <img class="img-fluid" src="images/women-bag-img.jpg" alt="" />
-                        <a class="btn hvr-hover" href="#">Bags</a>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
-                    <div class="shop-cat-box">
-                        <img class="img-fluid" src="images/shoes-img.jpg" alt="" />
-                        <a class="btn hvr-hover" href="#">Shoes</a>
-                    </div>
-                    <div class="shop-cat-box">
-                        <img class="img-fluid" src="images/women-shoes-img.jpg" alt="" />
-                        <a class="btn hvr-hover" href="#">Women Shoes</a>
-                    </div>
-                </div>
-            </div>
-        </div>
     </div>
-    <!-- End Categories -->
+    </div>
+</div>

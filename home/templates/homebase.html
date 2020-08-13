@@ -29,13 +29,16 @@
     <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
 
 
-    {% block head %}{% endblock %}
+    {% block head %}
+
+    {% endblock %}
 </head>
 <body>
 {% include 'header.html' %}
-{% block slider %}{% endblock %}
+{% block sidebar %}{% endblock %}
+{% block slider %} {% endblock %}
+{% block body %} {% endblock %}
 {% block content %}{% endblock %}
-
 {% include 'footer.html' %}
 {% block footer %}{% endblock %}
 </body>

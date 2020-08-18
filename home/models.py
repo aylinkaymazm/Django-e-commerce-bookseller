@@ -4,6 +4,8 @@ from django.db import models
 # Create your models here.
 from django.forms import ModelForm, TextInput, Textarea
 
+from product.models import Category
+
 
 class Setting(models.Model):
     STATUS = (
@@ -11,6 +13,7 @@ class Setting(models.Model):
         ('False', 'Hayır'),
     )
     #models.py den aldık
+    category=models.ForeignKey(Category,on_delete=models.CASCADE)
     title = models.CharField(max_length=100)
     keywords= models.CharField(max_length=255)
     description = models.CharField(max_length=255)

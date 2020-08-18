@@ -11,44 +11,44 @@
 </div>
 <!-- End Top Search -->
 {% for rs in lastproducts %}
-<!-- Start Categories category burada content te sidebarda değil -->
-<div class="categories-shop">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
-                <div class="shop-cat-box">
-                    <img class="img-fluid" src="{{ rs.image.url }}"  alt="" />
-                    <a class="btn hvr-hover" href="/product/{{ rs.id }}/{{ rs.slug }}">{{rs.title}}</a>
+    <!-- Start Categories category burada content te sidebarda değil -->
+    <div class="categories-shop">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+                    <div class="shop-cat-box">
+                        <img class="img-fluid" src="{{ rs.image.url }}"  alt="" />
+                        <a class="btn hvr-hover" href="/product/{{ rs.id }}/{{ rs.slug }}">{{rs.title}}</a>
+                    </div>
+                    <div class="shop-cat-box">
+                        <img class="img-fluid" src="{{ rs.image.url }}" alt="" />
+                        <a class="btn hvr-hover" href="/product/{{ rs.id }}/{{ rs.slug }}">{{rs.title}}</a>
+                    </div>
                 </div>
-                <div class="shop-cat-box">
-                    <img class="img-fluid" src="{{ rs.image.url }}" alt="" />
-                    <a class="btn hvr-hover" href="/product/{{ rs.id }}/{{ rs.slug }}">{{rs.title}}</a>
+                <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+                    <div class="shop-cat-box">
+                        <img class="img-fluid" src="{{ rs.image.url }}" alt="" />
+                        <a class="btn hvr-hover" href="/product/{{ rs.id }}/{{ rs.slug }}">{{rs.title}}</a>
+                    </div>
+                    <div class="shop-cat-box">
+                        <img class="img-fluid" src="{{ rs.image.url }}" alt="" />
+                        <a class="btn hvr-hover" href="/product/{{ rs.id }}/{{ rs.slug }}">{{rs.title}}</a>
+                    </div>
                 </div>
-            </div>
-            <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
-                <div class="shop-cat-box">
-                    <img class="img-fluid" src="{{ rs.image.url }}" alt="" />
-                    <a class="btn hvr-hover" href="/product/{{ rs.id }}/{{ rs.slug }}">{{rs.title}}</a>
-                </div>
-                <div class="shop-cat-box">
-                    <img class="img-fluid" src="{{ rs.image.url }}" alt="" />
-                    <a class="btn hvr-hover" href="/product/{{ rs.id }}/{{ rs.slug }}">{{rs.title}}</a>
-                </div>
-            </div>
-            <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
-                <div class="shop-cat-box">
-                    <img class="img-fluid" src="{{ rs.image.url }}" alt="" />
-                    <a class="btn hvr-hover" href="/product/{{ rs.id }}/{{ rs.slug }}">{{rs.title}}</a>
-                </div>
-                <div class="shop-cat-box">
-                    <img class="img-fluid" src="{{ rs.image.url }}" alt="" />
-                    <a class="btn hvr-hover" href="/product/{{ rs.id }}/{{ rs.slug }}">{{rs.title}}</a>
+                <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+                    <div class="shop-cat-box">
+                        <img class="img-fluid" src="{{ rs.image.url }}" alt="" />
+                        <a class="btn hvr-hover" href="/product/{{ rs.id }}/{{ rs.slug }}">{{rs.title}}</a>
+                    </div>
+                    <div class="shop-cat-box">
+                        <img class="img-fluid" src="{{ rs.image.url }}" alt="" />
+                        <a class="btn hvr-hover" href="/product/{{ rs.id }}/{{ rs.slug }}">{{rs.title}}</a>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
-<!-- End Categories -->
+    <!-- End Categories -->
 {% endfor %}
 <!-- Start Blog  -->
 <div class="latest-blog">

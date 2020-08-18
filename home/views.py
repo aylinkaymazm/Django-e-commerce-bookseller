@@ -5,7 +5,7 @@ from django.shortcuts import render
 # Create your views here.
 from home.models import Setting, ContactFormMessage, ContactFormu
 # context e yolla burdan render la index.html e yolluyoruz.
-from product.models import Product, Category
+from product.models import Product, Category, Images
 
 
 def index(request):
@@ -27,7 +27,6 @@ def index(request):
 
 def hakkimizda(request):
     setting = Setting.objects.get(pk=1)
-    category = Category.objects.all()
     category = Category.objects.all()
 
     context = {'setting': setting,
@@ -71,10 +70,10 @@ def iletisim(request):
     return render(request,'iletisim.html',context)
 
 
-def category_products(request, id, slug):
+def category_products(request, id, slug, products=None):
     category = Category.objects.all()
-    category = Category.objects.get(pk=id)
     categorydata = Product.objects.filter(category_id=id)
+    products,=Product.objects.filter(category_id=id)
     context = {'products':products,
                'category':category,
                'categorydata ':categorydata
@@ -83,7 +82,10 @@ def category_products(request, id, slug):
 
 def product_detail(request,id,slug):
     category = Category.objects.all()
-    context = {#'products': products,
+    product = Product.objects.get(pk=id)
+    images=Images.objects.filter(product_id=id)
+    context = {'product': product,
                'category': category,
+               'images':images,
                }
-    return HttpResponse(request,'product_detail.html',context)
+    return render(request,'product_detail.html',context)

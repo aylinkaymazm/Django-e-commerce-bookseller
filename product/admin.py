@@ -15,7 +15,6 @@ class CategoryAdmin(admin.ModelAdmin):
 
 class ProductAdmin(admin.ModelAdmin):
     list_display = ['title', 'category', 'price', 'amount','status']
-    readonly_fields = ('image_tag',)
     list_filter = ['status', 'category']
     inlines = [ProductImageInline]
 

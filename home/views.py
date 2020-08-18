@@ -4,8 +4,6 @@ from django.shortcuts import render
 
 # Create your views here.
 from home.models import Setting, ContactFormMessage, ContactFormu
-
-
 # context e yolla burdan render la index.html e yolluyoruz.
 from product.models import Product, Category
 
@@ -14,15 +12,22 @@ def index(request):
     setting = Setting.objects.get(pk=1)
     sliderdata = Product.objects.all()[:3]
     category = Category.objects.all()
+    dayproducts=Product.objects.all()[:4]
+    lastproducts= Product.objects.all().order_by('-id')[:4]
+
 
     context = {'setting': setting,
                'category': category,
                'page':'home',
-               'sliderdata': sliderdata}
+               'sliderdata': sliderdata,
+               'dayproducts': dayproducts,
+               'lastproducts': lastproducts,
+               }
     return render(request,'index.html',context)
 
 def hakkimizda(request):
     setting = Setting.objects.get(pk=1)
+    category = Category.objects.all()
     category = Category.objects.all()
 
     context = {'setting': setting,
@@ -32,8 +37,12 @@ def hakkimizda(request):
 
 def referanslar(request):
     setting = Setting.objects.get(pk=1)
+    category = Category.objects.all()
     context = {'setting': setting,
                'page':'home'}
+    context = {'setting': setting,
+               'category': category,
+               'page': 'home'}
     return render(request,'referanslarimiz.html',context)
 
 
@@ -53,9 +62,11 @@ def iletisim(request):
             return HttpResponseRedirect('/iletisim')
 
     setting = Setting.objects.get(pk=1)
+    category = Category.objects.all()
     form = ContactFormu()
     context = {'setting': setting,
-               'form':form
+               'form':form,
+               'category':category,
                }
     return render(request,'iletisim.html',context)
 
@@ -64,8 +75,15 @@ def category_products(request, id, slug):
     category = Category.objects.all()
     category = Category.objects.get(pk=id)
     categorydata = Product.objects.filter(category_id=id)
-    context = {'productss':products,
+    context = {'products':products,
                'category':category,
                'categorydata ':categorydata
                }
     return render(request,'products.html',context)
+
+def product_detail(request,id,slug):
+    category = Category.objects.all()
+    context = {#'products': products,
+               'category': category,
+               }
+    return HttpResponse(request,'product_detail.html',context)

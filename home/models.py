@@ -15,6 +15,7 @@ class Setting(models.Model):
     keywords= models.CharField(max_length=255)
     description = models.CharField(max_length=255)
     company = models.CharField(max_length=50)
+    image = models.ImageField(blank=True, upload_to='images/')
     address = models.CharField(blank=True , max_length=150)
     phone= models.CharField(blank=True , max_length=15)
     fax = models.CharField(blank=True , max_length=15)

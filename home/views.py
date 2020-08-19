@@ -4,6 +4,7 @@ from django.http import HttpResponse , HttpResponseRedirect
 from django.shortcuts import render
 
 # Create your views here.
+from home.forms import SignUpForm
 from home.models import Setting, ContactFormMessage, ContactFormu
 # context e yolla burdan render la index.html e yolluyoruz.
 from product.models import Product, Category, Images
@@ -38,8 +39,6 @@ def hakkimizda(request):
 def referanslar(request):
     setting = Setting.objects.get(pk=1)
     category = Category.objects.all()
-    context = {'setting': setting,
-               'page':'home'}
     context = {'setting': setting,
                'category': category,
                'page': 'home'}
@@ -113,4 +112,15 @@ def login_view(request):
     context = {'category':category,
               }
     return render(request,'login.html',context)
+
+def signup_view(request):
+    if request.method=='POST':
+            return HttpResponseRedirect('Sign up')
+    form = SignUpForm()
+    category = Category.objects.all()
+    context = {'category':category,
+               'form': form,
+              }
+    return render(request,'signup.html',context)
+
 

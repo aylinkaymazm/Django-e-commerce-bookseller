@@ -14,6 +14,7 @@ class Category(MPTTModel):
         ('False', 'Hayır'),
     )
     title = models.CharField(max_length=30)
+   #id eksik sanırım
     keywords= models.CharField(blank=True,max_length=255)
     description = models.CharField(blank=True,max_length=255)
     image=models.ImageField(blank=True , upload_to='images/')
@@ -85,7 +86,6 @@ class Comment(models.Model):
         ('True', 'Evet'),
         ('False', 'Hayır'),
     )
-    #product ın category ile ilişkisi var 1-1 manytomany
     product = models.ForeignKey(Product, on_delete=models.CASCADE)
     user = TreeForeignKey(User,on_delete=models.CASCADE)
     subject= models.CharField(max_length=255,blank=True)

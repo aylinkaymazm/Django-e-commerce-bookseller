@@ -144,7 +144,10 @@
                             {% if user.id is not None %}
                             <li><a href="#">{{ user.first_name }}</a></li>
                             {% else %}
-                            <li><a href="/login/">Giriş Yap</a>/<a href="/join/">Çıkış yap</a> </li>
+                            <li><a href="/login/">Giriş Yap</a>
+                                <br>
+                                <a href="/signup/">Sign up</a>
+                            </li>
                             {% endif %}
 
                             <li><a href="#">Favoriler</a></li>

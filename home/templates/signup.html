@@ -1,6 +1,6 @@
 {% extends "homebase.html" %}
 
-{% block title %}login{{setting.company }}{% endblock %}
+{% block title %}Sign Up{{setting.company }}{% endblock %}
 {% block keywords %}{{setting.keywords }}{% endblock %}
 {% block description %}{{setting.description }}{% endblock %}
 
@@ -18,7 +18,7 @@
                     <h2>Login</h2>
                     <ul class="breadcrumb">
                         <li class="breadcrumb-item"><a href="#">Anasayfa</a></li>
-                        <li class="breadcrumb-item active">Login </li>
+                        <li class="breadcrumb-item active">User Sign Up </li>
                     </ul>
 
                 </div>
@@ -30,30 +30,36 @@
             <div class="row new-account-login">
                 <div class="col-sm-6 col-lg-6 mb-3">
                     <div class="title-left">
-                        <h3>Account Login</h3>
+                        <h3>SignUp Form</h3>
                     </div>
                     {% if messages %}
                         {% for message in messages %}
-                            <div class="alert alert-{{ message.tags }} role="alert" >{{ message }}</div>
+                            <div class="alert alert-{{ message.tags }} role="alert">
+                            {{ message }}
+                            </div>
                         {% endfor %}
                     {% endif %}
+                <form method="post">
+                    {% csrf_token %}
+                    {% for field in form %}
+                    <p>
+                        {{ field.label_tag }}<br>
+                        {{ field
+                                {% if field.help_text %}}
+                                    <small style="color:grey">{{ field.help_text }}</small>
+                                {% endif %}
+                        {% for error in field.errors %}
+                            <p style="color: red">{{ error }}></p>
+                        {% endfor %}
 
-                    <form action="" method="post">
-                        {% csrf_token %}
-                            <div class="form-row">
-                                <div class="form-group col-md-6">
-                                    <input class="input"  type="text" name="username" placeholder="Fuser Name">
-                                </div>
-                            <div class="form-group col-md-6">
-                                <input class="input" type="password" name="password" placeholder="Password">
-                            </div>
+                    </p>
+                    <button type="submit" class="btn hvr-hover">Sign Up</button>
+                </form>
 
-                            <button type="submit" class="btn hvr-hover">Login</button>
-                            </div>
-                    </form>
-                </div>
+
             </div>
         </div>
+    </div>
     </div>
 
     <!-- End Cart -->

@@ -6,10 +6,10 @@
         {% for rs in sliderdata %}
         <li class="text-left">
             <div class="container">
-                <img src="{{ rs.image.url }}" alt="">
+                <img src="{{ rs.image.url }}" alt="" style="height: 6000px" >
                 <div class="row">
                     <div class="col-md-12">
-                        <h2 class="m-b-20"><strong>{{rs.title }}</strong></h2>
+                        <h1 class="m-b-20"><strong>{{rs.title }}</strong></h1>
                         <p class="m-b-40">{{ rs.description }}</p>
                         <p><a href="/product/ {{ rs.id }}/{{ rs.slug }}" class="btn hvr-hover" href="#">Satın Al</a></p>
                     </div>

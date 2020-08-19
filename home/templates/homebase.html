@@ -11,6 +11,7 @@
     <meta name="description" content="{% block description %} Anasayfa kısa açıklamalar{% endblock %}">
     <meta name="author" content="">
     {% load static %}
+
     <!-- Site Icons -->
     <link rel="shortcut icon" href="{% static "images/favicon.ico" %}" type="image/x-icon">
     <link rel="apple-touch-icon" href="{% static "images/apple-touch-icon.png" %}">
@@ -38,6 +39,7 @@
 {% block sidebar %}{% endblock %}
 {% block slider %} {% endblock %}
 {% block body %} {% endblock %}
+
 {% block content %}{% endblock %}
 {% include 'footer.html' %}
 {% block footer %}{% endblock %}

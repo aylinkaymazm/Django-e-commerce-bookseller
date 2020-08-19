@@ -32,6 +32,7 @@
                     <div class="title-left">
                         <h3>SignUp Form</h3>
                     </div>
+
                     {% if messages %}
                         {% for message in messages %}
                             <div class="alert alert-{{ message.tags }} role="alert">
@@ -42,24 +43,21 @@
                 <form method="post">
                     {% csrf_token %}
                     {% for field in form %}
-                    <p>
-                        {{ field.label_tag }}<br>
-                        {{ field
-                                {% if field.help_text %}}
-                                    <small style="color:grey">{{ field.help_text }}</small>
-                                {% endif %}
-                        {% for error in field.errors %}
-                            <p style="color: red">{{ error }}></p>
-                        {% endfor %}
-
-                    </p>
-                    <button type="submit" class="btn hvr-hover">Sign Up</button>
+                        <p>
+                            {{ field.label_tag }}<br>
+                            {{ field }}
+                            {% if field.help_text %}}
+                                <small style="color:grey">{{ field.help_text }}</small>
+                            {% endif %}
+                            {% for error in field.errors %}
+                                <p style="color: red">{{ error }}></p>
+                            {% endfor %}
+                        </p>
+                    {% endfor %}
+                    <button type="submit" class="btn hvr-hover">Üye ol</button>
                 </form>
-
-
             </div>
         </div>
-    </div>
     </div>
 
     <!-- End Cart -->

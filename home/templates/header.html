@@ -68,7 +68,7 @@
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-menu" aria-controls="navbars-rs-food" aria-expanded="false" aria-label="Toggle navigation">
                     <i class="fa fa-bars"></i>
                 </button>
-                <a class="navbar-brand" href="index.html"><img src="{% static "images/favicon.ico"%}"class="logo" alt="" ></a>
+                <a class="navbar-brand" href="index.html"><img src="{% static "images/favicon.ico" %}" class="logo" alt="" ></a>
             </div>
             <!-- End Header Navigation -->
             <!-- Collect the nav links, forms, and other content for toggling -->
@@ -77,9 +77,8 @@
                 <ul class="nav navbar-nav ml-auto" data-in="fadeInDown" data-out="fadeOutUp">
                     <li class="nav-item active"><a class="nav-link" href="/home">Anasayfa</a></li>
                     <li class="nav-item"><a class="nav-link" href="/hakkimizda">Hakkımızda</a></li>
-
                     <li class="dropdown megamenu-fw">
-                        <a href="#" class="nav-link dropdown-toggle arrow" data-toggle="dropdown" href="/products">Ürünlerimiz</a></a>
+                        <a href="#" class="nav-link dropdown-toggle arrow" data-toggle="dropdown" href="/products">Ürünlerimiz</a>
                         <ul class="dropdown-menu megamenu-content" role="menu">
                             <li>
                                 <div class="row">
@@ -136,21 +135,18 @@
                         </ul>
                     </li>
 
-
                     <li class="dropdown">
                         <a href="#" class="nav-link dropdown-toggle arrow" data-toggle="dropdown">Profil</a>
                         <ul class="dropdown-menu">
-                            <li><a href="#">Sepetim</a></li>
-                            {% if user.id is not None %}
-                            <li><a href="#">{{ user.first_name }}</a></li>
-                            {% else %}
-                            <li><a href="/login/">Giriş Yap</a>
-                                <br>
-                                <a href="/signup/">Sign up</a>
+                            <li class="nav-item"><a class="nav-link" href="/logout">Çıkış Yap</a>
+                                {% if user.id is not None %}
+                                    <li><a href="#">{{ user.first_name }}</a></li>
+                                {% else %}
+                                    <li><a href="/login/">Giriş Yap</a><a href="/signup/">Üye OL</a></li>
+                                {% endif %}
                             </li>
-                            {% endif %}
+                            <li><a href="#">Sepetim</a></li>
 
-                            <li><a href="#">Favoriler</a></li>
                         </ul>
                     </li>
 

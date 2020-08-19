@@ -115,7 +115,15 @@ def login_view(request):
 
 def signup_view(request):
     if request.method=='POST':
-            return HttpResponseRedirect('Sign up')
+        form=SignUpForm(request.POST)
+        if form.is_valid():
+            form.save()
+            username = request.POST['username']
+            password = request.POST['password1']
+            user = authenticate(request, username=username, password=password)
+            login(request, user)
+            return HttpResponseRedirect('/')
+
     form = SignUpForm()
     category = Category.objects.all()
     context = {'category':category,

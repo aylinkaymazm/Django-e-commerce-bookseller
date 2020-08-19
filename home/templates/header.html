@@ -141,8 +141,12 @@
                         <a href="#" class="nav-link dropdown-toggle arrow" data-toggle="dropdown">Profil</a>
                         <ul class="dropdown-menu">
                             <li><a href="#">Sepetim</a></li>
-                            <li><a href="#">Çıkış Yap</a></li>
-                            <li><a href="#">Hesabım</a></li>
+                            {% if user.id is not None %}
+                            <li><a href="#">{{ user.first_name }}</a></li>
+                            {% else %}
+                            <li><a href="/login/">Giriş Yap</a>/<a href="/join/">Çıkış yap</a> </li>
+                            {% endif %}
+
                             <li><a href="#">Favoriler</a></li>
                         </ul>
                     </li>

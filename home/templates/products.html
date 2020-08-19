@@ -26,8 +26,9 @@
     <div class="section">
         <div class="container">
             <div class="row">
+            {{ setting.product|safe }}
                 <div class="col-xl-3 col-lg-3 col-sm-12 col-xs-12 sidebar-shop-left">
-                    <div class="product-categori">
+                    <div class="product-categories">
                         <div class="search-product">
                             <form action="#">
                                 <input class="form-control" placeholder="Search here..." type="text">
@@ -40,33 +41,33 @@
                             </div>
                             <div class="list-group list-group-collapse list-group-sm list-group-tree" id="list-group-men" data-children=".sub-men">
                                 <div class="list-group-collapse sub-men">
-                                    <a class="list-group-item list-group-item-action" href="#sub-men1" data-toggle="collapse" aria-expanded="true" aria-controls="sub-men1">Clothing <small class="text-muted">(100)</small>
+                                    <a class="list-group-item list-group-item-action" href="#sub-men1" data-toggle="collapse" aria-expanded="true" aria-controls="sub-men1">Dergiler <small class="text-muted">(100)</small>
                                     </a>
                                     <div class="collapse show" id="sub-men1" data-parent="#list-group-men">
                                         <div class="list-group">
-                                            <a href="#" class="list-group-item list-group-item-action active">T-Shirts <small class="text-muted">(50)</small></a>
-                                            <a href="#" class="list-group-item list-group-item-action">Polo T-Shirts <small class="text-muted">(10)</small></a>
-                                            <a href="#" class="list-group-item list-group-item-action">Round Neck T-Shirts <small class="text-muted">(10)</small></a>
-                                            <a href="#" class="list-group-item list-group-item-action">V Neck T-Shirts <small class="text-muted">(10)</small></a>
-                                            <a href="#" class="list-group-item list-group-item-action">Hooded T-Shirts <small class="text-muted">(20)</small></a>
+                                            <a href="#" class="list-group-item list-group-item-action active">Aylık Dergiler <small class="text-muted">(50)</small></a>
+                                            <a href="#" class="list-group-item list-group-item-action">Edebiyat Dergileri <small class="text-muted">(10)</small></a>
+                                            <a href="#" class="list-group-item list-group-item-action">Çocuk Dergileri <small class="text-muted">(10)</small></a>
+                                            <a href="#" class="list-group-item list-group-item-action">Yemek Dergileri <small class="text-muted">(10)</small></a>
+                                            <a href="#" class="list-group-item list-group-item-action">Bilim Dergileri <small class="text-muted">(20)</small></a>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="list-group-collapse sub-men">
-                                    <a class="list-group-item list-group-item-action" href="#sub-men2" data-toggle="collapse" aria-expanded="false" aria-controls="sub-men2">Footwear
+                                    <a class="list-group-item list-group-item-action" href="#sub-men2" data-toggle="collapse" aria-expanded="false" aria-controls="sub-men2">Kitaplar
                                         <small class="text-muted">(50)</small>
                                     </a>
                                     <div class="collapse" id="sub-men2" data-parent="#list-group-men">
                                         <div class="list-group">
-                                            <a href="#" class="list-group-item list-group-item-action">Sports Shoes <small class="text-muted">(10)</small></a>
-                                            <a href="#" class="list-group-item list-group-item-action">Sneakers <small class="text-muted">(20)</small></a>
-                                            <a href="#" class="list-group-item list-group-item-action">Formal Shoes <small class="text-muted">(20)</small></a>
+                                            <a href="#" class="list-group-item list-group-item-action">Şiir Kitapları<small class="text-muted">(10)</small></a>
+                                            <a href="#" class="list-group-item list-group-item-action">Roman <small class="text-muted">(20)</small></a>
+                                            <a href="#" class="list-group-item list-group-item-action">e-kitap <small class="text-muted">(20)</small></a>
                                         </div>
                                     </div>
                                 </div>
-                                <a href="#" class="list-group-item list-group-item-action"> Men  <small class="text-muted">(150) </small></a>
-                                <a href="#" class="list-group-item list-group-item-action">Accessories <small class="text-muted">(11)</small></a>
-                                <a href="#" class="list-group-item list-group-item-action">Bags <small class="text-muted">(22)</small></a>
+                                <a href="#" class="list-group-item list-group-item-action">  ALES <small class="text-muted">(150) </small></a>
+                                <a href="#" class="list-group-item list-group-item-action"> YDS<small class="text-muted">(11)</small></a>
+                                <a href="#" class="list-group-item list-group-item-action"> AYT-YTY <small class="text-muted">(22)</small></a>
                             </div>
                         </div>
                         <div class="filter-price-left">
@@ -185,8 +186,6 @@
                             <div class="tab-content">
                                 <div role="tabpanel" class="tab-pane fade show active" id="grid-view">
                                     <div class="row">
-
-
                                         {% for rs in products %}
                                             <div class="col-sm-6 col-md-6 col-lg-4 col-xl-4">
                                                 <div class="products-single fix">
@@ -194,7 +193,7 @@
                                                         <div class="type-lb">
                                                             <p class="sale">İNDİRİM</p>
                                                         </div>
-                                                        <img src="{{ rs.image.url}}" class="img-fluid" alt="Image">
+                                                        <img src="{{ rs.image.url}}" class="img-fluid" alt="">
                                                         <div class="mask-icon">
                                                             <ul>
                                                                 <li><a href="#" data-toggle="tooltip" data-placement="right" title="View"><i class="fas fa-eye"></i></a></li>
@@ -216,161 +215,7 @@
                                                         <div class="type-lb">
                                                             <p class="new">Yeni>
                                                         </div>
-                                                        <img src="{{ rs.image.url}}" class="img-fluid" alt="Image">
-                                                        <div class="mask-icon">
-                                                            <ul>
-                                                                <li><a href="#" data-toggle="tooltip" data-placement="right" title="View"><i class="fas fa-eye"></i></a></li>
-                                                                <li><a href="#" data-toggle="tooltip" data-placement="right" title="Compare"><i class="fas fa-sync-alt"></i></a></li>
-                                                                <li><a href="#" data-toggle="tooltip" data-placement="right" title="Add to Wishlist"><i class="far fa-heart"></i></a></li>
-                                                            </ul>
-                                                            <a class="cart" href="/addtocard{{ rs.id }}">Sepete ekle</a>
-                                                        </div>
-                                                    </div>
-                                                    <div class="why-text">
-                                                        <h4><a href="/product/{{ rs.id }}/{{ rs.slug }}">{{ rs.title }}</a></h4>
-                                                        <h5{{ rs.price }}>{{ rs.price }}</h5>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="col-sm-6 col-md-6 col-lg-4 col-xl-4">
-                                                <div class="products-single fix">
-                                                    <div class="box-img-hover">
-                                                        <div class="type-lb">
-                                                            <p class="sale">İNDİRİM</p>
-                                                        </div>
-                                                        <img src="{{ rs.image.url}}" class="img-fluid" alt="Image">
-                                                        <div class="mask-icon">
-                                                            <ul>
-                                                                <li><a href="#" data-toggle="tooltip" data-placement="right" title="View"><i class="fas fa-eye"></i></a></li>
-                                                                <li><a href="#" data-toggle="tooltip" data-placement="right" title="Compare"><i class="fas fa-sync-alt"></i></a></li>
-                                                                <li><a href="#" data-toggle="tooltip" data-placement="right" title="Add to Wishlist"><i class="far fa-heart"></i></a></li>
-                                                            </ul>
-                                                            <a class="cart" href="/addtocard{{ rs.id }}">Sepete ekle</a>
-                                                        </div>
-                                                    </div>
-                                                    <div class="why-text">
-                                                        <h4><a href="/product/{{ rs.id }}/{{ rs.slug }}">{{ rs.title }}</a></h4>
-                                                        <h5{{ rs.price }}>{{ rs.price }}</h5>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="col-sm-6 col-md-6 col-lg-4 col-xl-4">
-                                                <div class="products-single fix">
-                                                    <div class="box-img-hover">
-                                                        <div class="type-lb">
-                                                            <p class="new">Yeni</p>
-                                                        </div>
-                                                        <img src="{{ rs.image.url}}" class="img-fluid" alt="Image">
-                                                        <div class="mask-icon">
-                                                            <ul>
-                                                                <li><a href="#" data-toggle="tooltip" data-placement="right" title="View"><i class="fas fa-eye"></i></a></li>
-                                                                <li><a href="#" data-toggle="tooltip" data-placement="right" title="Compare"><i class="fas fa-sync-alt"></i></a></li>
-                                                                <li><a href="#" data-toggle="tooltip" data-placement="right" title="Add to Wishlist"><i class="far fa-heart"></i></a></li>
-                                                            </ul>
-                                                            <a class="cart" href="/addtocard{{ rs.id }}">Sepete ekle</a>
-                                                        </div>
-                                                    </div>
-                                                    <div class="why-text">
-                                                        <h4><a href="/product/{{ rs.id }}/{{ rs.slug }}">{{ rs.title }}</a></h4>
-                                                        <h5{{ rs.price }}>{{ rs.price }}</h5>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="col-sm-6 col-md-6 col-lg-4 col-xl-4">
-                                                <div class="products-single fix">
-                                                    <div class="box-img-hover">
-                                                        <div class="type-lb">
-                                                            <p class="sale">İNDİRİM</p>
-                                                        </div>
-                                                        <img src="{{ rs.image.url}}" class="img-fluid" alt="Image">
-                                                        <div class="mask-icon">
-                                                            <ul>
-                                                                <li><a href="#" data-toggle="tooltip" data-placement="right" title="View"><i class="fas fa-eye"></i></a></li>
-                                                                <li><a href="#" data-toggle="tooltip" data-placement="right" title="Compare"><i class="fas fa-sync-alt"></i></a></li>
-                                                                <li><a href="#" data-toggle="tooltip" data-placement="right" title="Add to Wishlist"><i class="far fa-heart"></i></a></li>
-                                                            </ul>
-                                                            <a class="cart" href="/addtocard{{ rs.id }}">Sepete ekle</a>
-                                                        </div>
-                                                    </div>
-                                                    <div class="why-text">
-                                                        <h4><a href="/product/{{ rs.id }}/{{ rs.slug }}">{{ rs.title }}</a></h4>
-                                                        <h5{{ rs.price }}>{{ rs.price }}</h5>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="col-sm-6 col-md-6 col-lg-4 col-xl-4">
-                                                <div class="products-single fix">
-                                                    <div class="box-img-hover">
-                                                        <div class="type-lb">
-                                                            <p class="sale">İNDİRİM</p>
-                                                        </div>
-                                                        <img src="{{ rs.image.url}}" class="img-fluid" alt="Image">
-                                                        <div class="mask-icon">
-                                                            <ul>
-                                                                <li><a href="#" data-toggle="tooltip" data-placement="right" title="View"><i class="fas fa-eye"></i></a></li>
-                                                                <li><a href="#" data-toggle="tooltip" data-placement="right" title="Compare"><i class="fas fa-sync-alt"></i></a></li>
-                                                                <li><a href="#" data-toggle="tooltip" data-placement="right" title="Add to Wishlist"><i class="far fa-heart"></i></a></li>
-                                                            </ul>
-                                                            <a class="cart" href="/addtocard{{ rs.id }}">Sepete ekle</a>
-                                                        </div>
-                                                    </div>
-                                                    <div class="why-text">
-                                                        <h4><a href="/product/{{ rs.id }}/{{ rs.slug }}">{{ rs.title }}</a></h4>
-                                                        <h5{{ rs.price }}>{{ rs.price }}</h5>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="col-sm-6 col-md-6 col-lg-4 col-xl-4">
-                                                <div class="products-single fix">
-                                                    <div class="box-img-hover">
-                                                        <div class="type-lb">
-                                                            <p class="sale">İNDİRİM</p>
-                                                        </div>
-                                                        <img src="{{ rs.image.url}}" class="img-fluid" alt="Image">
-                                                        <div class="mask-icon">
-                                                            <ul>
-                                                                <li><a href="#" data-toggle="tooltip" data-placement="right" title="View"><i class="fas fa-eye"></i></a></li>
-                                                                <li><a href="#" data-toggle="tooltip" data-placement="right" title="Compare"><i class="fas fa-sync-alt"></i></a></li>
-                                                                <li><a href="#" data-toggle="tooltip" data-placement="right" title="Add to Wishlist"><i class="far fa-heart"></i></a></li>
-                                                            </ul>
-                                                            <a class="cart" href="/addtocard{{ rs.id }}">Sepete ekle</a>
-                                                        </div>
-                                                    </div>
-                                                    <div class="why-text">
-                                                        <h4><a href="/product/{{ rs.id }}/{{ rs.slug }}">{{ rs.title }}</a></h4>
-                                                        <h5{{ rs.price }}>{{ rs.price }}</h5>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="col-sm-6 col-md-6 col-lg-4 col-xl-4">
-                                                <div class="products-single fix">
-                                                    <div class="box-img-hover">
-                                                        <div class="type-lb">
-                                                            <p class="sale">İNDİRİM</p>
-                                                        </div>
-                                                        <img src="{{ rs.image.url}}" class="img-fluid" alt="Image">
-                                                        <div class="mask-icon">
-                                                            <ul>
-                                                                <li><a href="#" data-toggle="tooltip" data-placement="right" title="View"><i class="fas fa-eye"></i></a></li>
-                                                                <li><a href="#" data-toggle="tooltip" data-placement="right" title="Compare"><i class="fas fa-sync-alt"></i></a></li>
-                                                                <li><a href="#" data-toggle="tooltip" data-placement="right" title="Add to Wishlist"><i class="far fa-heart"></i></a></li>
-                                                            </ul>
-                                                            <a class="cart" href="/addtocard{{ rs.id }}">Sepete ekle</a>
-                                                        </div>
-                                                    </div>
-                                                    <div class="why-text">
-                                                        <h4><a href="/product/{{ rs.id }}/{{ rs.slug }}">{{ rs.title }}</a></h4>
-                                                        <h5{{ rs.price }}>{{ rs.price }}</h5>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="col-sm-6 col-md-6 col-lg-4 col-xl-4">
-                                                <div class="products-single fix">
-                                                    <div class="box-img-hover">
-                                                        <div class="type-lb">
-                                                            <p class="new">Yeni</p>
-                                                        </div>
-                                                        <img src="{{ rs.image.url}}" class="img-fluid" alt="Image">
+                                                        <img src="{{ rs.image.url}}" class="img-fluid" alt="">
                                                         <div class="mask-icon">
                                                             <ul>
                                                                 <li><a href="#" data-toggle="tooltip" data-placement="right" title="View"><i class="fas fa-eye"></i></a></li>
@@ -387,8 +232,6 @@
                                                 </div>
                                             </div>
                                         {% endfor %}
-
-
                                     </div>
                                 </div>
                             </div>

@@ -1,6 +1,6 @@
 {% extends "homebase.html" %}
 
-{% block title %}User Profil{{setting.company }}{% endblock %}
+{% block title %}{{profile.user_name}}Profil{% endblock %}
 {% block keywords %}{{setting.keywords }}{% endblock %}
 {% block description %}{{setting.description }}{% endblock %}
 
@@ -15,7 +15,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-12">
-                    <h2>İletişim</h2>
+                    <h2>User Profil</h2>
                     <ul class="breadcrumb">
                         <li class="breadcrumb-item"><a href="#">Anasayfa</a></li>
                         <li class="breadcrumb-item active">User Profil </li>
@@ -31,30 +31,45 @@
             <div class="row">
                 <div class="col-lg-4 col-sm-12">
                     <div class="contact-info-left">
-                        <h3>User Panel</h3>
-
-
+                        <h4 class="title">Profilim</h4>
+                        {% include "user_panel.html" %}
                     </div>
                 </div>
+
+
                 <div class="col-lg-8 col-sm-12">
                     <div class="contact-form-right">
                         <div class="billing-details">
                             <div class="section-title">
-                                <h3>User Information</h3>
+                                <h4>User Information</h4>
                             </div>
-                            {% if messages %}
-                                {% for message in messages %}
-                                    <div class="alert alert-{{ message.tags }} role="alert">
-                                    {{ message }}
-                                    </div>
-                                {% endfor %}
-                            {% endif %}
-
-                        <form action="" method="post">
-                            {% csrf_token %}
-                            {{ form.as_p }}
-                            <input type="submit" value="SEND FORM">
-                        </form>
+                            <table class="shopping-cart-table table">
+                                <tr>
+                                    <th class="text-left"></th>
+                                    <td class="thumb"><img src="{{ profile.image.url }}" alt=""></td>
+                                </tr>
+                                <tr>
+                                    <th class="text-center">Name Surname</th>
+                                    <td class="text-center">{{ profile.user.first_name }}</td>
+                                </tr>
+                                <tr>
+                                    <th class="text-center">Email</th>
+                                    <td class="text-center">{{ profile.user.email}}</td>
+                                </tr>
+                                <tr>
+                                    <th class="text-center">Address</th>
+                                    <td class="text-center">{{ profile.address }}</td>
+                                </tr>
+                                <tr>
+                                    <th class="text-center">City</th>
+                                    <td class="text-center">{{ profile.city }}</td>
+                                </tr>
+                                <tr>
+                                    <th class="text-center">Country</th>
+                                    <td class="text-center">{{ profile.country }}</td>
+                                </tr>
+                            </table>
+                        </div>
                     </div>
                 </div>
             </div>

@@ -86,10 +86,10 @@
                                         <h6 class="title">Dergiler</h6>
                                         <div class="content">
                                             <ul class="menu-col">
-                                                <li><a href="product_detail.html">Aylık Dergiler</a></li>
-                                                <li><a href="product_detail.html">Edebiyat Dergileri</a></li>
-                                                <li><a href="product_detail.html">Hobi Dergileri</a></li>
-                                                <li><a href="product_detail.html">Yemek dergileri</a></li>
+                                                <li><a href="/products">Aylık Dergiler</a></li>
+                                                <li><a href="/products">Edebiyat Dergileri</a></li>
+                                                <li><a href="/products">Hobi Dergileri</a></li>
+                                                <li><a href="/products">Yemek dergileri</a></li>
                                             </ul>
                                         </div>
                                     </div>
@@ -98,10 +98,10 @@
                                         <h6 class="title">Elektronik</h6>
                                         <div class="content">
                                             <ul class="menu-col">
-                                                <li><a href="product_detail.html">E-Kitap Okuyucular</a></li>
-                                                <li><a href="product_detail.html">Ev Elektroniği</a></li>
-                                                <li><a href="product_detail.html">Kulaklıklar</a></li>
-                                                <li><a href="product_detail.html">Tabletler ve Çevre Birimleri</a></li>
+                                                <li><a href="/products">E-Kitap Okuyucular</a></li>
+                                                <li><a href="/products">Ev Elektroniği</a></li>
+                                                <li><a href="/products">Kulaklıklar</a></li>
+                                                <li><a href="/products">Tabletler ve Çevre Birimleri</a></li>
                                             </ul>
                                         </div>
                                     </div>
@@ -110,10 +110,10 @@
                                         <h6 class="title">Kitaplar</h6>
                                         <div class="content">
                                             <ul class="menu-col">
-                                                <li><a href="product_detail.html">Roman</a></li>
-                                                <li><a href="product_detail.html">e-Kitaplar</a></li>
-                                                <li><a href="product_detail.html">Çocuk Kitapları</a></li>
-                                                <li><a href="product_detail.html">Şiir Kitapları</a></li>
+                                                <li><a href="/products">Roman</a></li>
+                                                <li><a href="/products">e-Kitaplar</a></li>
+                                                <li><a href="/products">Çocuk Kitapları</a></li>
+                                                <li><a href="/products">Şiir Kitapları</a></li>
                                             </ul>
                                         </div>
                                     </div>
@@ -121,10 +121,10 @@
                                         <h6 class="title">Sınav Kitapları</h6>
                                         <div class="content">
                                             <ul class="menu-col">
-                                                <li><a href="product_detail.html">ALES</a></li>
-                                                <li><a href="product_detail.html">ALES</a></li>
-                                                <li><a href="product_detail.html">TYT-AYT</a></li>
-                                                <li><a href="product_detail.html">YDS</a></li>
+                                                <li><a href="/products">LGS</a></li>
+                                                <li><a href="/products">ALES</a></li>
+                                                <li><a href="/products">TYT-AYT</a></li>
+                                                <li><a href="/products">YDS</a></li>
                                             </ul>
                                         </div>
                                     </div>
@@ -134,9 +134,9 @@
                             </li>
                         </ul>
                     </li>
-
+                    <li class="nav-item active"><a class="nav-link" href="/user">Profilim</a></li>
                     <li class="dropdown">
-                        <a href="#" class="nav-link dropdown-toggle arrow" data-toggle="dropdown">Profil</a>
+                        <a href="#" class="nav-link dropdown-toggle arrow" data-toggle="dropdown">Üye</a>
                         <ul class="dropdown-menu">
                             <li class="nav-item"><a class="nav-link" href="/logout">Çıkış Yap</a>
                                 {% if user.id is not None %}
@@ -145,10 +145,13 @@
                                     <li><a href="/login/">Giriş Yap</a><a href="/signup/">Üye OL</a></li>
                                 {% endif %}
                             </li>
-                            <li><a href="#">Sepetim</a></li>
-
                         </ul>
                     </li>
+
+
+                    <li class="nav-item"><a class="nav-link" href="#">Sepetim</a></li>
+
+
 
                     <li class="nav-item"><a class="nav-link" href="/referanslar">Referanslar</a></li>
                     <li class="nav-item"><a class="nav-link" href="/iletisim">İletişim</a></li>

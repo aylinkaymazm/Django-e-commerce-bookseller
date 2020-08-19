@@ -5,7 +5,7 @@ from django.shortcuts import render
 
 # Create your views here.
 from home.forms import SignUpForm
-from home.models import Setting, ContactFormMessage, ContactFormu
+from home.models import Setting, ContactFormMessage, ContactFormu, UserProfile
 # context e yolla burdan render la index.html e yolluyoruz.
 from product.models import Product, Category, Images
 
@@ -76,7 +76,8 @@ def category_products(request, id, slug, products=None):
     products,=Product.objects.filter(category_id=id)
     context = {'products':products,
                'category':category,
-               'categorydata ':categorydata
+               'categorydata ':categorydata,
+               'slug':slug,
                }
     return render(request,'products.html',context)
 
@@ -122,6 +123,12 @@ def signup_view(request):
             password = request.POST['password1']
             user = authenticate(request, username=username, password=password)
             login(request, user)
+
+            current_user = request.user
+            data = UserProfile()
+            data.user_id=current_user.id
+            data.image="images/users/user.png"
+            data.save()
             return HttpResponseRedirect('/')
 
     form = SignUpForm()

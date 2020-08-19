@@ -70,26 +70,33 @@ def iletisim(request):
     return render(request,'iletisim.html',context)
 
 
-def category_products(request, id, slug, products=None):
+def category_products(request, id, slug):
     category = Category.objects.all()
-    categorydata = Product.objects.filter(category_id=id)
-    products,=Product.objects.filter(category_id=id)
+    categorydata = Product.objects.filter(pk=id)
+    products = Product.objects.filter(category_id=id)
     context = {'products':products,
                'category':category,
                'categorydata ':categorydata,
-               'slug':slug,
                }
     return render(request,'products.html',context)
+
 
 def product_detail(request,id,slug):
     category = Category.objects.all()
     product = Product.objects.get(pk=id)
-    images=Images.objects.filter(product_id=id)
+    images = Images.objects.filter(product_id=id)
     context = {'product': product,
                'category': category,
                'images':images,
                }
     return render(request,'product_detail.html',context)
+
+def content_detail(request,id,slug):
+    category = Category.objects.all()
+    product = Product.objects.filter(category_id=id)
+    link='/product/'+str(product[0].id)+'/'+product[0].slug
+    #return HttpResponse(link)
+    return HttpResponseRedirect(link)
 
 def logout_view(request):
     logout(request)
@@ -102,6 +109,9 @@ def login_view(request):
         user = authenticate(request, username=username, password=password)
         if user is not None:
             login(request, user)
+            current_user=request.user
+            userprofile=UserProfile.objects.filter(user_id=current_user.id)
+            request.session['userimage']=userprofile[0].image.url
             # Redirect to a success page.
             return HttpResponseRedirect('/')
         else:
@@ -115,7 +125,7 @@ def login_view(request):
     return render(request,'login.html',context)
 
 def signup_view(request):
-    if request.method=='POST':
+    if request.method == 'POST':
         form=SignUpForm(request.POST)
         if form.is_valid():
             form.save()
@@ -129,6 +139,7 @@ def signup_view(request):
             data.user_id=current_user.id
             data.image="images/users/user.png"
             data.save()
+            messages.success(request,"Hoşgeldiniz...")
             return HttpResponseRedirect('/')
 
     form = SignUpForm()

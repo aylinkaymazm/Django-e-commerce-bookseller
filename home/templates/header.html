@@ -72,68 +72,30 @@
             </div>
             <!-- End Header Navigation -->
             <!-- Collect the nav links, forms, and other content for toggling -->
-            <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="navbar-menu">
                 <ul class="nav navbar-nav ml-auto" data-in="fadeInDown" data-out="fadeOutUp">
                     <li class="nav-item active"><a class="nav-link" href="/home">Anasayfa</a></li>
                     <li class="nav-item"><a class="nav-link" href="/hakkimizda">Hakkımızda</a></li>
+                    {% load mptt_tags %}
+                    {% recursetree category %}
                     <li class="dropdown megamenu-fw">
-                        <a href="#" class="nav-link dropdown-toggle arrow" data-toggle="dropdown" href="/products">Ürünlerimiz</a>
+                        <a href="/content/{{ node.id }}/{{ node.slug }}" class="nav-link dropdown-toggle arrow" {% if not node.is_leaf_node %} data-toggle="dropdown" {% endif %}>{{ node.title }}{% if node.is_leaf_node %}{% endif %}</a>
                         <ul class="dropdown-menu megamenu-content" role="menu">
-                            <li>
                                 <div class="row">
                                     <div class="col-menu col-md-3">
-                                        <h6 class="title">Dergiler</h6>
                                         <div class="content">
+                                            {% if not node.is_leaf_node %}
                                             <ul class="menu-col">
-                                                <li><a href="/products">Aylık Dergiler</a></li>
-                                                <li><a href="/products">Edebiyat Dergileri</a></li>
-                                                <li><a href="/products">Hobi Dergileri</a></li>
-                                                <li><a href="/products">Yemek dergileri</a></li>
+                                                <li><a href="/#">{{ children }}</a></li>
                                             </ul>
+                                            {% endif %}
+                                            <hr class="hidden-md hidden-lg">
                                         </div>
                                     </div>
-                                    <!-- end col-3 -->
-                                    <div class="col-menu col-md-3">
-                                        <h6 class="title">Elektronik</h6>
-                                        <div class="content">
-                                            <ul class="menu-col">
-                                                <li><a href="/products">E-Kitap Okuyucular</a></li>
-                                                <li><a href="/products">Ev Elektroniği</a></li>
-                                                <li><a href="/products">Kulaklıklar</a></li>
-                                                <li><a href="/products">Tabletler ve Çevre Birimleri</a></li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                    <!-- end col-3 -->
-                                    <div class="col-menu col-md-3">
-                                        <h6 class="title">Kitaplar</h6>
-                                        <div class="content">
-                                            <ul class="menu-col">
-                                                <li><a href="/products">Roman</a></li>
-                                                <li><a href="/products">e-Kitaplar</a></li>
-                                                <li><a href="/products">Çocuk Kitapları</a></li>
-                                                <li><a href="/products">Şiir Kitapları</a></li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                    <div class="col-menu col-md-3">
-                                        <h6 class="title">Sınav Kitapları</h6>
-                                        <div class="content">
-                                            <ul class="menu-col">
-                                                <li><a href="/products">LGS</a></li>
-                                                <li><a href="/products">ALES</a></li>
-                                                <li><a href="/products">TYT-AYT</a></li>
-                                                <li><a href="/products">YDS</a></li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                    <!-- end col-3 -->
                                 </div>
-                                <!-- end row -->
-                            </li>
                         </ul>
                     </li>
+                    {% endrecursetree %}
                     <li class="nav-item active"><a class="nav-link" href="/user">Profilim</a></li>
                     <li class="dropdown">
                         <a href="#" class="nav-link dropdown-toggle arrow" data-toggle="dropdown">Üye</a>
@@ -147,12 +109,7 @@
                             </li>
                         </ul>
                     </li>
-
-
                     <li class="nav-item"><a class="nav-link" href="#">Sepetim</a></li>
-
-
-
                     <li class="nav-item"><a class="nav-link" href="/referanslar">Referanslar</a></li>
                     <li class="nav-item"><a class="nav-link" href="/iletisim">İletişim</a></li>
                 </ul>

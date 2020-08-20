@@ -43,46 +43,48 @@
                             <span class="sr-only">Next</span>
                         </a>
                         {% for rs in images%}
-                        <ol class="carousel-indicators">
-                            <li data-target="#carousel-example-1" data-slide-to="0" class="active">
-                                <img class="d-block w-100 img-fluid" src="{{ rs.image.url }}" alt="" />
-                            </li>
-                            <li data-target="#carousel-example-1" data-slide-to="1">
-                                <img class="d-block w-100 img-fluid" src="{{ rs.image.url }}" alt="" />
-                            </li>
-                            <li data-target="#carousel-example-1" data-slide-to="2">
-                                <img class="d-block w-100 img-fluid" src="{{ rs.image.url }}" alt="" />
-                            </li>
-                        </ol>
+                            <ol class="carousel-indicators">
+                                <li data-target="#carousel-example-1" data-slide-to="0" class="active">
+                                    <img class="d-block w-100 img-fluid" src="{{ rs.image.url }}" alt="" />
+                                </li>
+                                <li data-target="#carousel-example-1" data-slide-to="1">
+                                    <img class="d-block w-100 img-fluid" src="{{ rs.image.url }}" alt="" />
+                                </li>
+                                <li data-target="#carousel-example-1" data-slide-to="2">
+                                    <img class="d-block w-100 img-fluid" src="{{ rs.image.url }}" alt="" />
+                                </li>
+                            </ol>
                         {% endfor %}
                     </div>
                 </div>
                 <div class="col-xl-7 col-lg-7 col-md-6">
                     <div class="single-product-details">
                         <h2>{{product.title }}</h2>
-                        <h5> <del>60.00</del>{{product.price }}</h5>
-                        <p class="available-stock"><span> Son 20! / <a href="#">8 adet sepette!</a></span>
+                        <h5> <del>360.00</del>{{product.price }}</h5>
+                        <p class="available-stock"><span> Son 20! / <a href="#">8 kişinin sepetinde !</a></span>
                         <p>
                         <h4>Açıklama</h4>
                         <p>{{product.detail|safe }} </p>
-                        <ul>
-                            <li>
+                        <form action="/order/addtocart/{{ product.id }}" method="post">
+                            {% csrf_token %}
+                            <ul>
+                                <li>
+                                    <div class="form-group quantity-box">
+                                        <label class="control-label">Kaç adet?</label>
+                                        <input name="quantity" class="input" type="number" value="1" min="0" max="{{product.amount }}">
+                                    </div>
+                                </li>
+                            </ul>
 
-                            </li>
-                            <li>
-                                <div class="form-group quantity-box">
-                                    <label class="control-label">Kaç adet?</label>
-                                    <input class="form-control" value="1" min="0" max="{{product.amount }}" type="number">
+                            <div class="price-box-bar">
+                                <div class="cart-and-bay-btn">
+                                    <a class="btn hvr-hover" data-fancybox-close="" href="/order/addtocart/{{ rs.id }}/{{ rs.slug }}">Sepete Ekle</a>
                                 </div>
-                            </li>
-                        </ul>
-
-                        <div class="price-box-bar">
-                            <div class="cart-and-bay-btn">
-                                <a class="btn hvr-hover" data-fancybox-close="" href="#">Buy New</a>
-                                <a class="btn hvr-hover" data-fancybox-close="" href="#">Add to cart</a>
                             </div>
-                        </div>
+
+
+                        </form>
+
 
                         <div class="add-to-btn">
                             <div class="add-comp">

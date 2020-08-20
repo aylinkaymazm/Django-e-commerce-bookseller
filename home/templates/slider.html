@@ -4,12 +4,12 @@
     <ul class="slides-container">
 
         {% for rs in sliderdata %}
-        <li class="text-left">
+        <li class="text-center">
             <div class="container">
-                <img src="{{ rs.image.url }}" alt="" style="height: 6000px" >
+                <img src="{{ rs.image.url }}" >
                 <div class="row">
                     <div class="col-md-12">
-                        <h1 class="m-b-20"><strong>{{rs.title }}</strong></h1>
+                        <h1 class="m-b-20">{{rs.title }}</h1>
                         <p class="m-b-40">{{ rs.description }}</p>
                         <p><a href="/product/ {{ rs.id }}/{{ rs.slug }}" class="btn hvr-hover" href="/order/addtocart/{{ rs.id }}/{{ rs.slug }}">Satın Al</a></p>
                     </div>

@@ -5,6 +5,7 @@ from django.shortcuts import render
 
 # Create your views here.
 from order.models import ShopCartForm, ShopCart
+from product.models import Category
 
 
 def index(request):
@@ -54,3 +55,52 @@ def addtocart(request, id):
 
     messages.warning(request, "HATA ! Ürün sepete eklenedemedi.")
     return HttpResponseRedirect(url)
+
+@login_required(login_url='/login')
+def shopcart(request):
+    category=Category.objects.all()
+    current_user = request.user
+    schopcart = ShopCart.objects.filter(user_id=current_user.id)
+    total = 0
+    for rs in schopcart:
+        total += rs.product.price * rs.quantity
+
+    context= {'schopcart': schopcart,
+              'category': category,
+              'total': total,
+            }
+    return render(request,'Shopcart_products.html',context)
+
+@login_required(login_url='/login')
+def deletefromcart(request,id):
+    ShopCart.objects.filter(id=id).delete()
+    messages.success(request,"Ürün sepetinizden silindi.")
+    return HttpResponseRedirect("/shopcart")
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

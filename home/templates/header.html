@@ -68,7 +68,7 @@
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-menu" aria-controls="navbars-rs-food" aria-expanded="false" aria-label="Toggle navigation">
                     <i class="fa fa-bars"></i>
                 </button>
-                <a class="navbar-brand" href="index.html"><img src="{% static "images/favicon.ico" %}" class="logo" alt="" ></a>
+                <a class="navbar-brand" href="/home"><img src="{% static "images/favicon.ico" %}" class="logo" alt="" ></a>
             </div>
             <!-- End Header Navigation -->
             <!-- Collect the nav links, forms, and other content for toggling -->
@@ -109,7 +109,7 @@
                             </li>
                         </ul>
                     </li>
-                    <li class="nav-item"><a class="nav-link" href="/order/addtocart/{{ rs.id }}/{{ rs.slug }}">Sepetim</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/shopcart">Sepetim->{{ request.session.cart_items }}</a></li>
                     <li class="nav-item"><a class="nav-link" href="/referanslar">Referanslar</a></li>
                     <li class="nav-item"><a class="nav-link" href="/iletisim">İletişim</a></li>
                 </ul>

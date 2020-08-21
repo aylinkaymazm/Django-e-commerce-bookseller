@@ -1,4 +1,3 @@
-from ckeditor_uploader.utils import get_random_string
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.http import HttpResponse, HttpResponseRedirect
@@ -109,7 +108,7 @@ def orderproduct(request):
             data.user_id = current_user.id
             data.total=total
             data.ip=request.META.get('REMOTE_ADDR')
-            ordercode=get_random_string().upper()
+            ordercode=get_random_string(5).upper()
             data.code=ordercode
             data.save()
 

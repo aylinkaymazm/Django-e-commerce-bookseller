@@ -43,13 +43,13 @@
                     </select>
                 </div>
                 <div class="right-phone-box">
-                    <p>Bize Ulaşın :- <a href="#"> +11 900 800 100</a></p>
+                    <p>Bize Ulaşın :- <a href="#"> +90 900 80 10</a></p>
                 </div>
                 <div class="our-link">
                     <ul>
-                        <li><a href="#">Hesabım</a></li>
-                        <li><a href="#">Neredeyiz</a></li>
-                        <li><a href="#">Sikayetim var</a></li>
+                        <li><a href="/user">Hesabım</a></li>
+                        <li><a href="/iletisim">Neredeyiz</a></li>
+                        <li><a href="/iletisim">Sikayetim var</a></li>
                     </ul>
                 </div>
             </div>
@@ -78,43 +78,51 @@
                     <li class="nav-item"><a class="nav-link" href="/hakkimizda">Hakkımızda</a></li>
                     {% load mptt_tags %}
                     {% recursetree category %}
-                    <li class="dropdown megamenu-fw">
-                        <a href="/content/{{ node.id }}/{{ node.slug }}" class="nav-link dropdown-toggle arrow" {% if not node.is_leaf_node %} data-toggle="dropdown" {% endif %}>{{ node.title }}{% if node.is_leaf_node %}{% endif %}</a>
-                        <ul class="dropdown-menu megamenu-content" role="menu">
+                        <li class="dropdown megamenu-fw">
+                            <a href="/content/{{ node.id }}/{{ node.slug }}" class="nav-link dropdown-toggle arrow" {% if not node.is_leaf_node %} data-toggle="dropdown" {% endif %}>{{ node.title }}{% if node.is_leaf_node %}{% endif %}</a>
+                            <ul class="dropdown-menu megamenu-content" role="menu">
                                 <div class="row">
                                     <div class="col-menu col-md-3">
                                         <div class="content">
                                             {% if not node.is_leaf_node %}
-                                            <ul class="menu-col">
-                                                <li><a href="/#">{{ children }}</a></li>
-                                            </ul>
+                                                <ul class="menu-col">
+                                                    <li><a href="/#">{{ children }}</a></li>
+                                                </ul>
                                             {% endif %}
                                             <hr class="hidden-md hidden-lg">
                                         </div>
                                     </div>
                                 </div>
-                        </ul>
-                    </li>
+                            </ul>
+                        </li>
                     {% endrecursetree %}
-                    <li class="nav-item active"><a class="nav-link" href="/user">Profilim</a></li>
-                    <li class="dropdown">
-                        <a href="#" class="nav-link dropdown-toggle arrow" data-toggle="dropdown">Üye</a>
-                        <ul class="dropdown-menu">
-                            <li class="nav-item"><a class="nav-link" href="/logout">Çıkış Yap</a>
-                                {% if user.id is not None %}
-                                    <li><a href="#">{{ user.first_name }}</a></li>
-                                {% else %}
-                                    <li><a href="/login/">Giriş Yap</a><a href="/signup/">Üye OL</a></li>
-                                {% endif %}
-                            </li>
-                        </ul>
-                    </li>
                     <li class="nav-item"><a class="nav-link" href="/shopcart">Sepetim->{{ request.session.cart_items }}</a></li>
                     <li class="nav-item"><a class="nav-link" href="/referanslar">Referanslar</a></li>
                     <li class="nav-item"><a class="nav-link" href="/iletisim">İletişim</a></li>
                 </ul>
             </div>
         </div>
+        <li>
+            {% if user.id is not None %}
+                <div class="dropdown-toggle" role="button" data-toggle="dropdown" arila-expanded="true">
+                    <div class="header-btns-icon">
+                        <i class="fa fa-user-o"></i>
+                        <strong class="text-uppercase">{{user.first_name}}</strong>
+                    </div>
+                </div>
+                <ul class="custom-menu">
+                    <li><a href="/user"><i class="fa fa-user-o"></i> Hesabım</a></li>
+                    <li><a href="/user/orders"><i class="fa fa-exchange"></i> Siparişlerim</a></li>
+                    <li><a href="/user/comments"><i class="fa fa-commenting-o"></i> Yorum</a></li>
+                    <li><a href="/logout/"><i class="fa fa-unlock-alt"></i> Logout</a></li>
+                </ul>
+            {% else %}
+                <div><a href="/login/">Giriş Yap</a> / <a href="/signup/">Üye ol</a></div>
+            {% endif %}
+
+
+
+        </li>
     </nav>
     <!-- End Navigation -->
 </header>

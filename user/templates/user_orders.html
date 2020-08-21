@@ -1,6 +1,6 @@
 {% extends "homebase.html" %}
 
-{% block title %}{{profile.user_name}}Profil{% endblock %}
+{% block title %}{{profile.user_name}}Order List{% endblock %}
 {% block keywords %}{{setting.keywords }}{% endblock %}
 {% block description %}{{setting.description }}{% endblock %}
 
@@ -18,7 +18,7 @@
                     <h2>User Profil</h2>
                     <ul class="breadcrumb">
                         <li class="breadcrumb-item"><a href="/">Anasayfa</a></li>
-                        <li class="breadcrumb-item active" href="/user">User Profil </li>
+                        <li class="breadcrumb-item active" href="/user">Order List </li>
                     </ul>
 
                 </div>
@@ -51,29 +51,33 @@
                             <div class="section-title">
                                 <br><h2>User Information</h2>
                             </div>
+
+
                             <table class="table">
 
-                                <tr>
-                                    <th class="text-left">
-                                        <a href="/user/update" class="genric-btn success radius text-uppercase">Update Profile</a><br>
-                                        <a href="/user/password" class="genric-btn success radius text-uppercase">Change Password</a>
-                                    </th>
-                                    <td><img src="{{ profile.image.url }}" style="height: 200px" alt=""></td>
-                                </tr>
-                                <tr>
-                                    <th class="text-left">Name Surname</th>
-                                    <td class="text-left">{{ profile.user_name }}</td>
-                                </tr>
-                                <tr>
-                                    <th class="text-left">Address</th>
-                                    <td class="text-left">{{ profile.address}}</td>
-                                </tr>
-                                <tr>
-                                    <th class="text-left">City</th>
-                                    <td class="text-left">{{ profile.city}}</td>
-                                </tr>
+                        <tr>
+                            <th class="text-left">Id</th>
+                            <th class="text-left">First Name</th>
+                            <th class="text-left">Last Name </th>
+                            <th class="text-left">Total</th>
+                            <th class="text-left">Status</th>
+                            <th class="text-left">Date</th>
+                            <th class="text-left">Detail</th>
+                        </tr>
+                        {% for rs in orders %}
+                            <tr>
+                                <td class="text-left">{{ rs.id }}</td>
+                                <td class="text-left">{{ rs.first_name }}</td>
+                                <td class="text-left">{{ rs.last_name }}</td>
+                                <td class="text-left">{{ rs.total }}</td>
+                                <td class="text-left">{{ rs.status }}</td>
+                                <td class="text-left">{{ rs.date }}</td>
+                                <td class="text-left">{{ rs.create_at }}</td>
+                                <td class="text-left"><a class="genric-btn danger radius text-uppercase" href="/user/orderdetail/{{ rs.id }}{{ rs.slug }}">Detay</a></td>
+                            </tr>
+                        {% endfor %}
 
-                            </table>
+                    </table>
                         </div>
                     </div>
                 </div>

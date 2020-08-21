@@ -1,0 +1,67 @@
+{% extends "homebase.html" %}
+
+{% block title %}{{profile.user_name}}Profil{% endblock %}
+{% block keywords %}{{setting.keywords }}{% endblock %}
+{% block description %}{{setting.description }}{% endblock %}
+
+{% block head %}
+    <link rel='shortcut icon' type='image/x-icon' href='{{ setting.icon.url }}' />
+{% endblock %}
+{% block sidebar %}{% include "sidebar.html" %}{% endblock %}
+
+{% block content %}
+    <!-- Start All BREADCRUMB Title Box -->
+    <div class="all-title-box">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <h2>User Profil</h2>
+                    <ul class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="/">Anasayfa</a></li>
+                        <li class="breadcrumb-item active" href="/user">Profil </li>
+                    </ul>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Start blog-posts Area -->
+    <section class="section-gap">
+        <div class="container">
+            <div class="row ">
+                <div class="col-md-3 ">
+
+                    {% include "user_panel.html" %}
+
+                </div>
+                <div class="col-md-9 single-widget ">
+                    <div class="text-uppercase"><br><h2> User Information Update </h2></div>
+                    <hr>
+                    <div class="content-section">
+                        <div class="media">
+                            <img src="{{ user.userprofile.image.url }}" style="height: 150px ; border-radius: 20px">
+                        </div>
+                        <hr>
+
+                        <form method="POST" enctype="multipart/form-data">
+                            {% csrf_token %}
+                            <fieldset  class="form-group">
+
+                                {{ user_form.as_p }}
+                                {{ profile_form.as_p }}
+
+                            </fieldset>
+                            <div class="form-group">
+                                <button class="genric-btn success radius text-uppercase" type="submit">Update</button>
+                            </div>
+                        </form>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- End blog-posts Area -->
+
+    <!-- End Cart -->
+{% endblock %}

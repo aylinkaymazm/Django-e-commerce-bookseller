@@ -1,0 +1,45 @@
+{% extends "homebase.html" %}
+{% block title %}} Sıkça Sorulan Sorular {% endblock %}
+{% block keywords %}{% endblock %}
+{% block description %}{% endblock %}
+
+{% block head %}
+    <link rel='shortcut icon' type='image/x-icon' href='{{ setting.icon.url }}' />
+{% endblock %}
+{% block sidebar %}{% include "sidebar.html" %}{% endblock %}
+
+{% block content %}
+    <!-- Start All BREADCRUMB Title Box -->
+    <div class="all-title-box">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <h2></h2>
+                    <ul class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="/">Anasayfa</a></li>
+                        <li class="breadcrumb-item active" href="/sss">} Sıkça Sorulan Sorular  </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- End All Title Box -->
+    <!-- Start Services  -->
+    <div class="services-box-main">
+        <div class="container">
+
+                <div id="accordion">
+
+                    {% for rs in faq %}
+                        <h3>{{ rs.question }}</h3>
+                        <div>
+                            <p>
+                                {{ rs.answer }}
+                            </p>
+                        </div>
+                    {% endfor %}
+                </div>
+
+        </div>
+    </div>
+{% endblock %}

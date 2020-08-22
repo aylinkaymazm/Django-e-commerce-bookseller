@@ -6,7 +6,7 @@ from django.shortcuts import render
 # Create your views here.
 import product
 from home.forms import SignUpForm
-from home.models import Setting, ContactFormMessage, ContactFormu, UserProfile
+from home.models import Setting, ContactFormMessage, ContactFormu, UserProfile, FAQ
 # context e yolla burdan render la index.html e yolluyoruz.
 from order.models import ShopCart
 from product.models import Product, Category, Images
@@ -157,3 +157,11 @@ def signup_view(request):
     return render(request,'signup.html',context)
 
 
+def faq(request):
+    category = Category.objects.all()
+    faq = FAQ.objects.all().order_by('ordernumber')
+    context = {'category': category,
+               'faq': faq,
+               }
+
+    return render(request, 'faq.html', context)

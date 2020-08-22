@@ -11,14 +11,15 @@ class ShopCartAdmin(admin.ModelAdmin):
 class OrderProductline(admin.TabularInline):
     model = OrderProduct
     readonly_fields = ('user','product','price','quantity','amount')
-    can_delete = False
+    can_delete = False #sipariş silinmemeli
     extra = 0
 
 class OrderAdmin(admin.ModelAdmin):
     list_display = ['first_name','last_name','city','total','status']
     list_filter = ['status']
     readonly_fields = ('user','address','country','first_name','ip','last_name','city','total')
-    inlines = [OrderProductline]
+    can_delete = False #sipariş bilgileride
+    inlines = [OrderProductline]  #aynı sayfada göster
 
 class OrderProductAdmin(admin.ModelAdmin):
     list_display = ['user','product','price','quantity','amount']

@@ -1,6 +1,6 @@
 {% extends "homebase.html" %}
 
-{% block title %}{{profile.user_name}}Order Item{% endblock %}
+{% block title %}Order detail{{% endblock %}
 {% block keywords %}{{setting.keywords }}{% endblock %}
 {% block description %}{{setting.description }}{% endblock %}
 
@@ -18,7 +18,7 @@
                     <h2>User Profil</h2>
                     <ul class="breadcrumb">
                         <li class="breadcrumb-item"><a href="/">Anasayfa</a></li>
-                        <li class="breadcrumb-item active" >Order Item </li>
+                        <li class="breadcrumb-item active" href="/user/orderdetail">Order detail </li>
                     </ul>
 
                 </div>
@@ -55,23 +55,23 @@
 
                                 <tr>
                                     <th class="text-left">Name Surname</th>
-                                    <td class="text-left">{{ order.user_name }}</td>
+                                    <td class="text-left">{{ order.user.first_name }}</td>
                                 </tr>
                                 <tr>
                                     <th class="text-left">Address</th>
-                                    <td class="text-left">{{ order.address}}</td>
+                                    <td class="text-left">{{ order.user.address}}</td>
                                 </tr>
                                 <tr>
                                     <th class="text-left">City</th>
-                                    <td class="text-left">{{ order.city}}</td>
+                                    <td class="text-left">{{ order.user.city}}</td>
                                 </tr>
                                 <tr>
                                     <th class="text-left">Status</th>
-                                    <td class="text-left">{{ order.status}}</td>
+                                    <td class="text-left">{{ order.user.status}}</td>
                                 </tr>
                                 <tr>
                                     <th class="text-left">Shipping Information</th>
-                                    <td class="text-left">{{ order.adminnote}}</td>
+                                    <td class="text-left">{{ order.user.adminnote}}</td>
                                 </tr>
 
                             </table>
@@ -101,7 +101,6 @@
                                         <td class="text-left">{{ rs.quantity }}</td>
                                         <td class="text-left">{{ rs.amount }}</td>
                                         <td class="text-left">{{ rs.status }}</td>
-                                        <td class="text-left">{{ rs.create_at }}</td>
                                     </tr>
                                 {% endfor %}
                             </table>

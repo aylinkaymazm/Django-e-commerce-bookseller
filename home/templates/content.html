@@ -1,28 +1,93 @@
 {% load static %}
 <!-- Start Top Search -->
-<div class="top-search">
+<div class="products-box">
     <div class="container">
-        <div class="input-group">
-            <span class="input-group-addon"><i class="fa fa-search"></i></span>
-            <input type="text" class="form-control" placeholder="Search">
-            <span class="input-group-addon close-search"><i class="fa fa-times"></i></span>
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="title-all text-center">
+                    <h1>Featured Products</h1>
+                </div>
+            </div>
         </div>
-    </div>
-</div>
-<!-- End Top Search -->
-{% for rs in lastproducts %}
-    <!-- Start Categories category burada content te sidebarda değil -->
-    <div class="categories-shop">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
-                    <div class="shop-cat-box">
-                        <img class="img-fluid" src="{{ rs.image.url }}"  alt="" />
-                        <a class="btn hvr-hover" href="/order/addtocart/{{ rs.id }}">{{rs.title}} | Sepete Ekle</a>
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="special-menu text-center">
+                    <div class="button-group filter-button-group">
+                        <button class="active" data-filter="*">All</button>
+                        <button data-filter=".top-featured">Top featured</button>
+                        <button data-filter=".best-seller">Best seller</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="row special-list">
+            <div class="col-lg-3 col-md-6 special-grid best-seller">
+                <div class="products-single fix">
+                    <div class="box-img-hover">
+                        {% for rs in lastproducts %}
+                            <img src="{{ rs.image.url }}" class="img-fluid" alt="">
+                            <div class="why-text">
+                                <h4>{{rs.title}}</h4>
+                                <h5> ${{rs.price}}</h5>
+                                <a class="cart" href="/order/addtocart/{{ rs.id }}/{{ rs.slug}}">Sepete Ekle</a>
+                            </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+
+
+
+            <div class="col-lg-3 col-md-6 special-grid top-featured">
+                <div class="products-single fix">
+                    <div class="box-img-hover">
+                        {% for rs in dayproducts %}
+                            <img src="{{ rs.image.url }}" class="img-fluid" alt="">
+
+                            <div class="why-text">
+                                <h4>{{rs.title}}</h4>
+                                <h5> ${{rs.price}}</h5>
+                                <a class="cart" href="/order/addtocart/{{ rs.id }}/{{ rs.slug}}">Sepete Ekle</a>
+                            </div>
+                        {% endfor %}
+
+                    </div>
+                </div>
+            </div>
+
+
+
+
+            <div class="col-lg-3 col-md-6 special-grid top-featured">
+                <div class="products-single fix">
+                    <div class="box-img-hover">
+                        {% for rs in randomproducts %}
+                            <img src="{{ rs.image.url }}" class="img-fluid" alt="">
+                            <div class="why-text">
+                                <h4>{{rs.title}}</h4>
+                                <h5> ${{rs.price}}</h5>
+                                <a class="cart" href="/order/addtocart/{{ rs.id }}/{{ rs.slug}}">Sepete Ekle</a>
+                            </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6 special-grid best-seller">
+                <div class="products-single fix">
+                    <div class="box-img-hover">
+                        {% for rs in randomproducts %}
+                            <img src="{{ rs.image.url }}" class="img-fluid" alt="">
+                            <div class="why-text">
+                                <h4>{{rs.title}}</h4>
+                                <h5> ${{rs.price}}</h5>
+                                <a class="cart" href="/order/addtocart/{{ rs.id }}/{{ rs.slug}}">Sepete Ekle</a>
+                            </div>
+                        {% endfor %}
                     </div>
                 </div>
             </div>
         </div>
     </div>
-    <!-- End Categories -->
-{% endfor %}
+</div>

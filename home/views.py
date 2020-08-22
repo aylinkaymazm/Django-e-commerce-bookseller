@@ -4,6 +4,7 @@ from django.http import HttpResponse , HttpResponseRedirect
 from django.shortcuts import render
 
 # Create your views here.
+import product
 from home.forms import SignUpForm
 from home.models import Setting, ContactFormMessage, ContactFormu, UserProfile
 # context e yolla burdan render la index.html e yolluyoruz.
@@ -18,6 +19,8 @@ def index(request):
     category = Category.objects.all()
     dayproducts=Product.objects.all()[:4]
     lastproducts= Product.objects.all().order_by('-id')[:4]
+    randomproducts = Product.objects.all().order_by('?')[:4]
+
     request.session['cart_items'] = ShopCart.objects.filter(user_id=current_user.id).count()
 
     context = {'setting': setting,
@@ -26,6 +29,8 @@ def index(request):
                'sliderdata': sliderdata,
                'dayproducts': dayproducts,
                'lastproducts': lastproducts,
+               'randomproducts':randomproducts,
+               'product':product,
                }
     return render(request,'index.html',context)
 

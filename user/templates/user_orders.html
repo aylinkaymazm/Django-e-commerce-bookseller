@@ -1,6 +1,6 @@
 {% extends "homebase.html" %}
 
-{% block title %}{{profile.user_name}}Order List{% endblock %}
+{% block title %}Order List{% endblock %}
 {% block keywords %}{{setting.keywords }}{% endblock %}
 {% block description %}{{setting.description }}{% endblock %}
 
@@ -18,9 +18,8 @@
                     <h2>User Profil</h2>
                     <ul class="breadcrumb">
                         <li class="breadcrumb-item"><a href="/">Anasayfa</a></li>
-                        <li class="breadcrumb-item active" href="/user">Order List </li>
+                        <li class="breadcrumb-item active" href="/user/order">Order List </li>
                     </ul>
-
                 </div>
             </div>
         </div>
@@ -39,7 +38,7 @@
             <div class="row">
                 <div class="col-lg-4 col-sm-12">
                     <div class="contact-info-left">
-                        <h4 class="title">Profilim</h4>
+                        <h4 class="title">Profil</h4>
                         {% include "user_panel.html" %}
                     </div>
                 </div>
@@ -55,29 +54,26 @@
 
                             <table class="table">
 
-                        <tr>
-                            <th class="text-left">Id</th>
-                            <th class="text-left">First Name</th>
-                            <th class="text-left">Last Name </th>
-                            <th class="text-left">Total</th>
-                            <th class="text-left">Status</th>
-                            <th class="text-left">Date</th>
-                            <th class="text-left">Detail</th>
-                        </tr>
-                        {% for rs in orders %}
-                            <tr>
-                                <td class="text-left">{{ rs.id }}</td>
-                                <td class="text-left">{{ rs.first_name }}</td>
-                                <td class="text-left">{{ rs.last_name }}</td>
-                                <td class="text-left">{{ rs.total }}</td>
-                                <td class="text-left">{{ rs.status }}</td>
-                                <td class="text-left">{{ rs.date }}</td>
-                                <td class="text-left">{{ rs.create_at }}</td>
-                                <td class="text-left"><a class="genric-btn danger radius text-uppercase" href="/user/orderdetail/{{ rs.id }}{{ rs.slug }}">Detay</a></td>
-                            </tr>
-                        {% endfor %}
+                                <tr>
+                                    <th class="text-left">First Name</th>
+                                    <th class="text-left">Last Name </th>
+                                    <th class="text-left">Total</th>
+                                    <th class="text-left">Status</th>
+                                    <th class="text-left">Date</th>
+                                    <th class="text-left">Detail</th>
+                                </tr>
+                                {% for rs in orders %}
+                                    <tr>
+                                        <td class="text-left">{{ rs.first_name }}</td>
+                                        <td class="text-left">{{ rs.last_name }}</td>
+                                        <td class="text-left">{{ rs.total }}</td>
+                                        <td class="text-left">{{ rs.status }}</td>
+                                        <td class="text-left">{{ rs.date }}</td>
+                                        <td class="text-left"><a class="genric-btn danger radius text-uppercase" href="/user/orderdetail/{{ rs.id }}{{ rs.slug }}">Detay</a></td>
+                                    </tr>
+                                {% endfor %}
 
-                    </table>
+                            </table>
                         </div>
                     </div>
                 </div>

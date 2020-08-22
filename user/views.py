@@ -71,16 +71,16 @@ def orders(request):
     orders = Order.objects.filter(user_id=current_user.id)
     context = {'category': category,
                'orders': orders,
-               }
-    #return HttpResponse("Rezervasyon Listesi")
+    }
+    #return HttpResponse("product Listesi")
     return render(request,'user_orders.html',context)
 
 @login_required(login_url='/login')  # Check Login
 def orderdetail(request,id):
     category = Category.objects.all()
     current_user = request.user
-    order = Order.objects.get(user_id=current_user.id, id=id)   #güvenlik açığını önlemek için..
-    orderitems = OrderProduct.objects.filter(order_=id)
+    order = Order.objects.get(user_id=current_user.id,id=id)   #güvenlik açığını önlemek için..
+    orderitems = OrderProduct.objects.filter(order_id=id)
     context = {'category': category,
                'order': order,
                'orderitems': orderitems,

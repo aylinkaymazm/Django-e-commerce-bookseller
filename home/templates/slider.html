@@ -9,9 +9,9 @@
                 <img src="{{ rs.image.url }}" >
                 <div class="row">
                     <div class="col-md-12">
-                        <h1 class="m-b-20">{{rs.title }}</h1>
+                        <h4><a class="btn hvr-hover"  href="/product/{{ rs.id }}/{{ rs.slug }}">{{rs.title}}</a></h4>
                         <p class="m-b-40">{{ rs.description }}<br>${{ rs.price }}</p>
-                        <p><a class="btn hvr-hover" href="/order/addtocart/{{ rs.id }}/{{ rs.slug}}">Satın Al</a></p>
+                        <p><a class="btn hvr-hover" href="/order/addtocart/{{ rs.id }}/{{ rs.slug}}">Sepete Ekle</a></p>
                     </div>
                 </div>
             </div>

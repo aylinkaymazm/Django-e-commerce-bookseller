@@ -29,7 +29,7 @@
                         {% for rs in lastproducts %}
                             <img src="{{ rs.image.url }}" class="img-fluid" alt="">
                             <div class="why-text">
-                                <h4>{{rs.title}}</h4>
+                                <a class="cart" href="/product/{{ rs.id }}/{{ rs.slug }}"><h4>{{rs.title}}</h4></a>
                                 <h5> ${{rs.price}}</h5>
                                 <a class="cart" href="/order/addtocart/{{ rs.id }}/{{ rs.slug}}">Sepete Ekle</a>
                             </div>
@@ -47,7 +47,7 @@
                             <img src="{{ rs.image.url }}" class="img-fluid" alt="">
 
                             <div class="why-text">
-                                <h4>{{rs.title}}</h4>
+                                <a class="cart" href="/product/{{ rs.id }}/{{ rs.slug }}"><h4>{{rs.title}}</h4></a>
                                 <h5> ${{rs.price}}</h5>
                                 <a class="cart" href="/order/addtocart/{{ rs.id }}/{{ rs.slug}}">Sepete Ekle</a>
                             </div>
@@ -66,7 +66,7 @@
                         {% for rs in randomproducts %}
                             <img src="{{ rs.image.url }}" class="img-fluid" alt="">
                             <div class="why-text">
-                                <h4>{{rs.title}}</h4>
+                                <a class="cart" href="/product/{{ rs.id }}/{{ rs.slug }}"><h4>{{rs.title}}</h4></a>
                                 <h5> ${{rs.price}}</h5>
                                 <a class="cart" href="/order/addtocart/{{ rs.id }}/{{ rs.slug}}">Sepete Ekle</a>
                             </div>
@@ -80,7 +80,7 @@
                         {% for rs in randomproducts %}
                             <img src="{{ rs.image.url }}" class="img-fluid" alt="">
                             <div class="why-text">
-                                <h4>{{rs.title}}</h4>
+                                <a class="cart" href="/product/{{ rs.id }}/{{ rs.slug }}"><h4>{{rs.title}}</h4></a>
                                 <h5> ${{rs.price}}</h5>
                                 <a class="cart" href="/order/addtocart/{{ rs.id }}/{{ rs.slug}}">Sepete Ekle</a>
                             </div>

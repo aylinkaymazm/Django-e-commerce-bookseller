@@ -18,7 +18,7 @@
                     <h2>User Profil</h2>
                     <ul class="breadcrumb">
                         <li class="breadcrumb-item"><a href="/">Anasayfa</a></li>
-                        <li class="breadcrumb-item active" href="/user/orderdetail">Order detail </li>
+                        <li class="breadcrumb-item active" href="/user/order">Order detail </li>
                     </ul>
 
                 </div>
@@ -33,81 +33,82 @@
         {% endfor %}
     {% endif %}
 
-    <!--- area --->
-    <div class="contact-box-main">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-4 col-sm-12">
+    <!-- Start blog-posts Area -->
+    <section class="section-gap">
+        <!--- area --->
+        <div class="contact-box-main">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-4 col-sm-12">
 
-                    <div class="contact-info-left">
-                        {% include "user_panel.html" %}
+                        <div class="contact-info-left">
+                            {% include "user_panel.html" %}
+                        </div>
                     </div>
-                </div>
 
-                <div class="col-lg-8 col-sm-12">
-                    <div class="contact-form-right">
+                    <div class="col-lg-8 col-sm-12">
+                        <div class="contact-form-right">
 
-                        <div class="section-title">
-                            <br><h2>Order Shipping Information</h2>
-                        </div>
-                        <table class="table">
+                            <div class="section-title">
+                                <br><h2>Order Shipping Information</h2>
+                            </div>
+                            <table class="table">
 
-                            <tr>
-                                <th class="text-left">Name Surname</th>
-                                <td class="text-left">{{ order.user.first_name }}</td>
-                            </tr>
-                            <tr>
-                                <th class="text-left">Address</th>
-                                <td class="text-left">{{ order.user.address}}</td>
-                            </tr>
-                            <tr>
-                                <th class="text-left">City</th>
-                                <td class="text-left">{{ order.user.city}}</td>
-                            </tr>
-                            <tr>
-                                <th class="text-left">Status</th>
-                                <td class="text-left">{{ order.user.status}}</td>
-                            </tr>
-                            <tr>
-                                <th class="text-left">Shipping Information</th>
-                                <td class="text-left">{{ order.user.adminnote}}</td>
-                            </tr>
-
-                        </table>
-                        <div class="section-title">
-                            <br><h2>ORDER Item List </h2>
-                        </div>
-
-                        <table class="table">
-
-                            <tr>
-                                <th class="text-left">Product Name</th>
-                                <th class="text-left">Price </th>
-                                <th class="text-left">Quantity</th>
-                                <th class="text-left">Amount</th>
-                                <th class="text-left">Status</th>
-                                <th class="text-left">Date</th>
-                            </tr>
-                            {% for rs in orderitems %}
                                 <tr>
-                                    <td class="text-left">
-                                        <a href="/product/{{ rs.product_id }}/{{ rs.product.slug }}">
-                                            <img src="{{ rs.product.image.url }}" height="80">
-                                        </a>
-                                    </td>
-                                    <td class="text-left">{{ rs.product.title }}</td>
-                                    <td class="text-left">{{ rs.price }}</td>
-                                    <td class="text-left">{{ rs.quantity }}</td>
-                                    <td class="text-left">{{ rs.amount }}</td>
-                                    <td class="text-left">{{ rs.status }}</td>
+                                    <th class="text-left">Name Surname</th>
+                                    <td class="text-left">{{ user.username }}</td>
                                 </tr>
-                            {% endfor %}
-                        </table>
+                                <tr>
+                                    <th class="text-left">Address</th>
+                                    <td class="text-left">{{ order.address}}</td>
+                                </tr>
+                                <tr>
+                                    <th class="text-left">City</th>
+                                    <td class="text-left">{{ order.city}}</td>
+                                </tr>
+                                <tr>
+                                    <th class="text-left">Status</th>
+                                    <td class="text-left">{{ order.status}}</td>
+                                </tr>
+                                <tr>
+                                    <th class="text-left">Shipping Information</th>
+                                    <td class="text-left">{{ order.adminnote}}</td>
+                                </tr>
+
+                            </table>
+                            <div class="section-title">
+                                <br><h2>ORDER Item Detail </h2>
+                            </div>
+
+                            <table class="table">
+
+                                <tr>
+                                    <th class="text-left">Product Image</th>
+                                    <th class="text-left">Product Name</th>
+                                    <th class="text-left">Price </th>
+                                    <th class="text-left">Quantity</th>
+                                    <th class="text-left">Amount</th>
+                                </tr>
+                                {% for rs in orderitems %}
+                                    <tr>
+                                        <td class="text-left">
+                                            <a href="/product/{{ rs.product_id }}/{{ rs.product.slug }}">
+                                                <img src="{{ rs.product.image.url }}" height="80px">
+                                            </a>
+                                        </td>
+                                        <td class="text-left">{{ rs.product.title }}</td>
+                                        <td class="text-left">{{ rs.price }}</td>
+                                        <td class="text-left">{{ rs.quantity }}</td>
+                                        <td class="text-left">{{ rs.amount }}</td>
+                                    </tr>
+                                {% endfor %}
+                            </table>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
+    </section>
 
     <!-- End Cart -->
 {% endblock %}

@@ -86,4 +86,4 @@ def orderdetail(request,id):
                'orderitems': orderitems,
                }
     #return HttpResponse(str(id))
-    return render(request, "user_orders.html", context)
+    return render(request, "user_order_detail.html", context)

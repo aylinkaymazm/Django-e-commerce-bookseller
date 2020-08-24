@@ -55,21 +55,21 @@
                             <table class="table">
 
                                 <tr>
+                                    <th class="text-left">Id</th>
                                     <th class="text-left">First Name</th>
                                     <th class="text-left">Last Name </th>
                                     <th class="text-left">Total</th>
                                     <th class="text-left">Status</th>
-                                    <th class="text-left">Date</th>
                                     <th class="text-left">Detail</th>
                                 </tr>
                                 {% for rs in orders %}
                                     <tr>
+                                        <th class="text-left">{{ rs.id }}</th>
                                         <td class="text-left">{{ rs.first_name }}</td>
                                         <td class="text-left">{{ rs.last_name }}</td>
                                         <td class="text-left">{{ rs.total }}</td>
                                         <td class="text-left">{{ rs.status }}</td>
-                                        <td class="text-left">{{ rs.date }}</td>
-                                        <td class="text-left"><a class="genric-btn danger radius text-uppercase" href="/user/orderdetail/{{ rs.id }}{{ rs.slug }}">Detay</a></td>
+                                        <td class="text-left"><a class="genric-btn danger radius text-uppercase" href="/user/orderdetail/{{ rs.id }}">Detay</a></td>
                                     </tr>
                                 {% endfor %}
 
